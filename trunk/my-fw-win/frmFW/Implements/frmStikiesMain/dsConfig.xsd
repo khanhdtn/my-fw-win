@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsConfig" targetNamespace="http://tempuri.org/dsConfig.xsd" xmlns:mstns="http://tempuri.org/dsConfig.xsd" xmlns="http://tempuri.org/dsConfig.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsConfig" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsConfig" msprop:Generator_DataSetName="dsConfig">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtNotes" msprop:Generator_UserTableName="dtNotes" msprop:Generator_RowDeletedName="dtNotesRowDeleted" msprop:Generator_RowChangedName="dtNotesRowChanged" msprop:Generator_RowClassName="dtNotesRow" msprop:Generator_RowChangingName="dtNotesRowChanging" msprop:Generator_RowEvArgName="dtNotesRowChangeEvent" msprop:Generator_RowEvHandlerName="dtNotesRowChangeEventHandler" msprop:Generator_TableClassName="dtNotesDataTable" msprop:Generator_TableVarName="tabledtNotes" msprop:Generator_RowDeletingName="dtNotesRowDeleting" msprop:Generator_TablePropName="dtNotes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_UserColumnName="id" msprop:nullValue="_throw" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" type="xs:long" />
+              <xs:element name="Message" msprop:Generator_UserColumnName="Message" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_ColumnPropNameInRow="Message" type="xs:string" minOccurs="0" />
+              <xs:element name="X" msprop:Generator_UserColumnName="X" msprop:Generator_ColumnPropNameInRow="X" msprop:Generator_ColumnVarNameInTable="columnX" msprop:Generator_ColumnPropNameInTable="XColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Y" msprop:Generator_UserColumnName="Y" msprop:Generator_ColumnPropNameInRow="Y" msprop:Generator_ColumnVarNameInTable="columnY" msprop:Generator_ColumnPropNameInTable="YColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Width" msprop:Generator_UserColumnName="Width" msprop:Generator_ColumnPropNameInRow="Width" msprop:Generator_ColumnVarNameInTable="columnWidth" msprop:Generator_ColumnPropNameInTable="WidthColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Height" msprop:Generator_UserColumnName="Height" msprop:Generator_ColumnPropNameInRow="Height" msprop:Generator_ColumnVarNameInTable="columnHeight" msprop:Generator_ColumnPropNameInTable="HeightColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Opacity" msprop:Generator_UserColumnName="Opacity" msprop:Generator_ColumnPropNameInRow="Opacity" msprop:Generator_ColumnVarNameInTable="columnOpacity" msprop:Generator_ColumnPropNameInTable="OpacityColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="TitlebarColor" msprop:Generator_UserColumnName="TitlebarColor" msprop:Generator_ColumnPropNameInRow="TitlebarColor" msprop:Generator_ColumnVarNameInTable="columnTitlebarColor" msprop:Generator_ColumnPropNameInTable="TitlebarColorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BgColor" msprop:Generator_UserColumnName="BgColor" msprop:Generator_ColumnPropNameInRow="BgColor" msprop:Generator_ColumnVarNameInTable="columnBgColor" msprop:Generator_ColumnPropNameInTable="BgColorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Font" msprop:Generator_UserColumnName="Font" msprop:Generator_ColumnPropNameInRow="Font" msprop:Generator_ColumnVarNameInTable="columnFont" msprop:Generator_ColumnPropNameInTable="FontColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FontColor" msprop:Generator_UserColumnName="FontColor" msprop:Generator_ColumnPropNameInRow="FontColor" msprop:Generator_ColumnVarNameInTable="columnFontColor" msprop:Generator_ColumnPropNameInTable="FontColorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TitleFont" msprop:Generator_UserColumnName="TitleFont" msprop:Generator_ColumnVarNameInTable="columnTitleFont" msprop:Generator_ColumnPropNameInRow="TitleFont" msprop:Generator_ColumnPropNameInTable="TitleFontColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TitleFontColor" msprop:Generator_UserColumnName="TitleFontColor" msprop:Generator_ColumnVarNameInTable="columnTitleFontColor" msprop:Generator_ColumnPropNameInRow="TitleFontColor" msprop:Generator_ColumnPropNameInTable="TitleFontColorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Title" msprop:Generator_UserColumnName="Title" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_ColumnPropNameInRow="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="FlagImage" msprop:Generator_UserColumnName="FlagImage" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnFlagImage" msprop:Generator_ColumnPropNameInTable="FlagImageColumn" msprop:Generator_ColumnPropNameInRow="FlagImage" type="xs:string" minOccurs="0" />
+              <xs:element name="UserId" msprop:Generator_UserColumnName="UserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="IdMsg" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="IdMsg" msprop:Generator_ColumnPropNameInRow="IdMsg" msprop:Generator_ColumnVarNameInTable="columnIdMsg" msprop:Generator_ColumnPropNameInTable="IdMsgColumn" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint2" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dtNotes" />
+      <xs:field xpath="mstns:IdMsg" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,2638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9334939F-E462-44A6-9859-9132B2C886E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProtocolVN.Framework.Win</RootNamespace>
+    <AssemblyName>ProtocolVN.Framework.Win</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\_products\pl-office\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Ouput\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ChilkatDotNet2, Version=8.5.0.0, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ChilkatDotNet2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.Enterprise.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.Enterprise.InfoStore.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_pl-portable\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalToolkit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\CrystalToolkit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpres.Core, Version=1.0.10.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\DevExpres.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v10.1.Core, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.OfficeSkins.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Tutorials.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v10.1.UI, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v10.1.Core, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.1.Extensions, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v10.1.Core, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=2.5.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.TextEditor, Version=1.0.3.1761, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ICSharpCode.TextEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.Office, Version=2.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Interop.Office.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.VBIDE, Version=5.3.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Interop.VBIDE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.Word, Version=8.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Interop.Word.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\LumenWorks.Framework.IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="LumiSoft.Net, Version=2.0.3085.15278, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\LumiSoft.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_dll\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel.2007, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Microsoft.Office.Interop.Excel.2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word.2007, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Microsoft.Office.Interop.Word.2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_dll\Microsoft.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtocolVN.DanhMuc, Version=1.0.10.16884, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ProtocolVN.DanhMuc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ProtocolVN.Framework.Core, Version=1.0.10.21192, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ProtocolVN.Framework.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ProtocolVN.Framework.Lic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ProtocolVN.Framework.Lic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ProtocolVN.Framework.Win.Dev, Version=1.0.10.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ProtocolVN.Framework.Win.Dev.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.calculate.base, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.calculate.base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.compression.base, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.compression.base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Core, Version=6.202.0.32, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Syncfusion.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.docio.base, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.docio.base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.docio.windows, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.docio.windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.xlsio.base, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.xlsio.base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="syncfusion.xlsio.windows, Version=6.202.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\syncfusion.xlsio.windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UserAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\UserAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\MainControl\ControlGrid\frmGroupIntervalOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\frmGroupIntervalOption.designer.cs">
+      <DependentUpon>frmGroupIntervalOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlTree\PLDataTree.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="English\frmChangePwdEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="English\frmChangePwdEN.Designer.cs">
+      <DependentUpon>frmChangePwdEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="English\frmLoginEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="English\frmLoginEN.Designer.cs">
+      <DependentUpon>frmLoginEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmCauHinhNghiepVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmCauHinhNghiepVu.designer.cs">
+      <DependentUpon>frmCauHinhNghiepVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmConfigServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmConfigServer.Designer.cs">
+      <DependentUpon>frmConfigServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmDieuKhoanSuDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmDieuKhoanSuDung.Designer.cs">
+      <DependentUpon>frmDieuKhoanSuDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldFWRunExit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldFWRunExit.Designer.cs">
+      <DependentUpon>frmOldFWRunExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldFWRunFirst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldFWRunFirst.Designer.cs">
+      <DependentUpon>frmOldFWRunFirst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmGopY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmGopY.Designer.cs">
+      <DependentUpon>frmGopY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\frmTBieuDo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\HelpPivotGrid.cs" />
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\HelpPivotGridField.cs" />
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\IPivotOLAP.cs" />
+    <Compile Include="frmT\Demo\frmChartXYDemo.cs" />
+    <Compile Include="frmT\Demo\frmChartXYZDemo.cs" />
+    <Compile Include="frmFW\frmFWUserError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWUserError.Designer.cs">
+      <DependentUpon>frmFWUserError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWNote.Designer.cs">
+      <DependentUpon>frmFWNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWPromotionDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWPromotionDesktop.Designer.cs">
+      <DependentUpon>frmFWPromotionDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmNote\DAFWNote.cs" />
+    <Compile Include="frmFW\Implements\frmNote\DOFWNote.cs" />
+    <Compile Include="frmFW\Redesign\frmOldConfigDBSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldConfigDBSecurity.Designer.cs">
+      <DependentUpon>frmOldConfigDBSecurity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmNewLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmNewLogin.Designer.cs">
+      <DependentUpon>frmNewLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldPLAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldPLAbout.Designer.cs">
+      <DependentUpon>frmOldPLAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\frmTPhieuThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTPhieuThongKeTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTPhieuThongKeTemplate.designer.cs">
+      <DependentUpon>frmTPhieuThongKeTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplate.Designer.cs">
+      <DependentUpon>frmTimPopupTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\Application\EmbededData\DieuKhoanSuDung.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\DanhMuc\DanhMucParams.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\DanhMuc\DMFWNhanVien.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\DanhMuc\DMFWPhongBan.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\DanhMuc\DanhMucPermission.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\IDanhMuc.cs" />
+    <Compile Include="frmUserConfig\frmOptionQL\Redesign\OldDisplayOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\Redesign\OldDisplayOption.Designer.cs">
+      <DependentUpon>OldDisplayOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseXtraReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseXtraReport.designer.cs">
+      <DependentUpon>frmBaseXtraReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\IHeaderStartTitleGridEndFooter.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\PLCrystalReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysForm\Implements\RightClickTitleBarWindow.cs" />
+    <Compile Include="frmUserConfig\sysForm\Implements\FormType.cs" />
+    <Compile Include="frmUserConfig\sysForm\Implements\RightClickTitleBarDialog.cs" />
+    <Compile Include="frmUserConfig\sysForm\XtraFormPublicPL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysMenu\FWMenu23xDID.cs" />
+    <Compile Include="frmUserConfig\sysMenu\FWMenu23xBlank.cs" />
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserManExtUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserManExtUpdate.Designer.cs">
+      <DependentUpon>frmTreeUserManExtUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\IPermissionable.cs" />
+    <Compile Include="frmUserConfig\sysPlugins\Implements\HelpPLPlugin.cs" />
+    <Compile Include="frmUserConfig\sysPlugins\Implements\IPlugIn.cs" />
+    <Compile Include="frmUserConfig\sysWarning\frmAssignUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\frmAssignUser.Designer.cs">
+      <DependentUpon>frmAssignUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\frmWarningManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\frmWarningManager.Designer.cs">
+      <DependentUpon>frmWarningManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\Implements\InstallDB.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\WarningSupport.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\WarningSystemPluginEx.cs" />
+    <Compile Include="frmUserConfig\sysWarning\PlugIn.cs" />
+    <Compile Include="Help\HelpDateExt02.cs" />
+    <Compile Include="Help\HelpExeExt.cs" />
+    <Compile Include="Help\HelpMultiDataTypeField.cs" />
+    <Compile Include="Help\Implements\HelpWaiting\frmProcessFileWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpWaiting\frmProcessFileWait.Designer.cs">
+      <DependentUpon>frmProcessFileWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\PhieuThongKeHelp.cs" />
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\PopupChartOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Implements\frmTPhieuThongKe\PopupChartOption.Designer.cs">
+      <DependentUpon>PopupChartOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\HelpWaiting\frmProgressWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpWaiting\frmProgressWait.Designer.cs">
+      <DependentUpon>frmProgressWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmCategoryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmCategoryDialog.Designer.cs">
+      <DependentUpon>frmCategoryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmSimpleCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\frmSimpleCategory.Designer.cs">
+      <DependentUpon>frmSimpleCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMBasicGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMBasicGrid.Designer.cs">
+      <DependentUpon>DMBasicGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMGrid.Designer.cs">
+      <DependentUpon>DMGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroup.Designer.cs">
+      <DependentUpon>DMTreeGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroupElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroupElement.Designer.cs">
+      <DependentUpon>DMTreeGroupElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\ICategory.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\Implements\PLDelegation.cs" />
+    <Compile Include="frmUserConfig\frmCategoryQL\PopupFormGridEditDataInPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmCategoryQL\PopupFormGridEditDataInPopupForm.Designer.cs">
+      <DependentUpon>PopupFormGridEditDataInPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\IPLInstall.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseReport.Designer.cs">
+      <DependentUpon>frmBaseReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseReportExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\frmBaseReportExt.designer.cs">
+      <DependentUpon>frmBaseReportExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\CustomReportHelp.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\DataReportHelp.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmCustomReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmCustomReport.Designer.cs">
+      <DependentUpon>frmCustomReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmDataReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmDataReport.Designer.cs">
+      <DependentUpon>frmDataReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmFax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\frmFax.Designer.cs">
+      <DependentUpon>frmFax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\IReport.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\PLXtraPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\PLXtraPreview.Designer.cs">
+      <DependentUpon>PLXtraPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmReportQL\Implements\ReportDO.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\ReportHelp.cs" />
+    <Compile Include="frmUserConfig\frmReportQL\Implements\ReportStore.cs" />
+    <Compile Include="frmUserConfig\sysMenu\frmRibbonMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysMenu\frmRibbonMain.Designer.cs">
+      <DependentUpon>frmRibbonMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysMenu\FWBlankMenu.cs" />
+    <Compile Include="frmUserConfig\sysMenu\PLMenu.cs" />
+    <Compile Include="frmUserConfig\sysMenu\FWMenu22x.cs" />
+    <Compile Include="frmUserConfig\sysMenu\FWMenu23x.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\FWMenuFactory.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\GenID.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\HomePageMenu.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\IMenuForm.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\MenuToolbar.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\ProtocolMenu.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\QuickAccessMethodExec.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\RibbonButton.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\RibbonMainMenu.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\RibbonQuickAccess.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\SkinGalleryHelper.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\SplashScreen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysForm\XtraFormPL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysForm\Implements\RightClickTitleBarHelper.cs" />
+    <Compile Include="frmUserConfig\sysPermission\Implements\PermissionSolution.cs" />
+    <Compile Include="frmUserConfig\sysUserLog\frmUserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysUserLog\frmUserLog.Designer.cs">
+      <DependentUpon>frmUserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysUserLog\Implements\frmUserLogHelp.cs" />
+    <Compile Include="frmUserConfig\sysUserLog\Implements\HelpUserLog.cs" />
+    <Compile Include="frmUserConfig\sysUserLog\Implements\IPLLog.cs" />
+    <Compile Include="frmUserConfig\sysWarning\frmConfigWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\frmConfigWarning.Designer.cs">
+      <DependentUpon>frmConfigWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysWarning\Implements\AlertControlOut.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\IConfigWarning.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\IWarningDefine.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\PLOut.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\RibbonStatusOut.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\SystemTrayOut.cs" />
+    <Compile Include="frmUserConfig\sysWarning\Implements\XtraFormOut.cs" />
+    <Compile Include="frmUserConfig\sysForm\Implements\SystemMenu.cs" />
+    <Compile Include="HelpPrivate\WinLaw.cs" />
+    <Compile Include="Help\HelpApplication.cs" />
+    <Compile Include="Help\HelpBandedGrid.cs" />
+    <Compile Include="Help\HelpBandedGridColumn.cs" />
+    <Compile Include="frmFW\Redesign\frmCauHinhMauPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmCauHinhMauPhieu.designer.cs">
+      <DependentUpon>frmCauHinhMauPhieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWLiveUpdateDirect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmAddressBook\frmContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmAddressBook\frmContact.Designer.cs">
+      <DependentUpon>frmContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmAddressBook\frmGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmAddressBook\frmGroup.Designer.cs">
+      <DependentUpon>frmGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmLiveUpdate\LiveUpdateHelper.cs" />
+    <Compile Include="frmT\frmTimPopupBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLy1NBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLy10Banded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLyBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateBandedVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateBandedVertical.Designer.cs">
+      <DependentUpon>frmTimPopupTemplateBandedVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateBandedVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateBandedVertical.Designer.cs">
+      <DependentUpon>frmQL1NTemplateBandedVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateBandedVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateBandedVertical.Designer.cs">
+      <DependentUpon>frmQL11TemplateBandedVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateBandedVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateBandedVertical.Designer.cs">
+      <DependentUpon>frmQL10TemplateBandedVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateBanded.Designer.cs">
+      <DependentUpon>frmTimPopupTemplateBanded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmTimPopupTemplateVertical.Designer.cs">
+      <DependentUpon>frmTimPopupTemplateVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateBanded.Designer.cs">
+      <DependentUpon>frmQL1NTemplateBanded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateBanded.Designer.cs">
+      <DependentUpon>frmQL10TemplateBanded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateBanded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateBanded.Designer.cs">
+      <DependentUpon>frmQL11TemplateBanded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplateVertical.Designer.cs">
+      <DependentUpon>frmQL1NTemplateVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11TemplateVertical.Designer.cs">
+      <DependentUpon>frmQL11TemplateVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateVertical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10TemplateVertical.Designer.cs">
+      <DependentUpon>frmQL10TemplateVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\GenerateSQLMethodExec.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\_EX_STORE_PROCEDURE.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\_EX_TABLE_NAME.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\frmGenerateSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\frmGenerateSQL.Designer.cs">
+      <DependentUpon>frmGenerateSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpEmail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Help\HelpFile.cs" />
+    <Compile Include="Help\HelpFURL.cs" />
+    <Compile Include="Help\HelpCommonDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\HelpProtocolForm.cs" />
+    <Compile Include="Help\HelpString.cs" />
+    <Compile Include="Help\HelpSysLog.cs" />
+    <Compile Include="Help\HelpReportXtra.cs" />
+    <Compile Include="Help\HelpWaiting.cs" />
+    <Compile Include="Help\_HelpNoCategory.cs" />
+    <Compile Include="Help\Redesign\HelpThread.cs" />
+    <Compile Include="Help\HelpMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\HelpVerticalGrid.cs" />
+    <Compile Include="Help\HelpDebug.cs" />
+    <Compile Include="Help\Implements\frmPLBrowser\ctrlFavorites.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\frmPLBrowser\ctrlFavorites.designer.cs">
+      <DependentUpon>ctrlFavorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\frmPLBrowser\frmWebBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\frmPLBrowser\frmWebBrowser.designer.cs">
+      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\ZipFile.cs" />
+    <Compile Include="Database\Firebird\AppFirebirdServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\Firebird\frmImportFirebird.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Help\HelpDBExt.cs" />
+    <Compile Include="Database\Firebird\FirebirdHelpDebug.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\FirebirdFilterToSQLStatement.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\FilterToSQLStatement.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmSaveQueryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmSaveQueryDialog.Designer.cs">
+      <DependentUpon>frmSaveQueryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpExcel.cs" />
+    <Compile Include="Help\Implements\XlsFileConnection.cs" />
+    <Compile Include="frmUserConfig\sysPermission\frmUserManExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmUserManExt.Designer.cs">
+      <DependentUpon>frmUserManExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLCheckedComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLCheckedComboBox.designer.cs">
+      <DependentUpon>PLCheckedComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\MultiSelect\PLMultiCombobox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DevMainApp.cs" />
+    <Compile Include="frmFW\frmFWRunExit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWRunExit.Designer.cs">
+      <DependentUpon>frmFWRunExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWRunFirst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWRunFirst.Designer.cs">
+      <DependentUpon>frmFWRunFirst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\VGrid\VGridValidation.cs" />
+    <Compile Include="frmUserConfig\Application\SupportDeveloper.cs" />
+    <Compile Include="frmFW\Redesign\frmCompanyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmCompanyInfo.designer.cs">
+      <DependentUpon>frmCompanyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldConfigServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmOldConfigServer.Designer.cs">
+      <DependentUpon>frmOldConfigServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\Application\FWMethodExec.cs" />
+    <Compile Include="Database\frmImportIDB.cs" />
+    <Compile Include="Database\PLDebugIDB.cs" />
+    <Compile Include="Database\WinRDBMS.cs" />
+    <Compile Include="_DEV\BarCode\BarcodeNColMRow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\BarcodeNColMRow.Designer.cs">
+      <DependentUpon>BarcodeNColMRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BarCode\FileBarcodeOption.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmBarcodeConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmBarcodeConfig.Designer.cs">
+      <DependentUpon>frmBarcodeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BarCode\HelpBarCode.cs" />
+    <Compile Include="_DEV\BarCode\ProductBarcode.cs" />
+    <Compile Include="_DEV\BarCode\DOBarcodeOption.cs" />
+    <Compile Include="_DEV\BarCode\frmInputBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmInputBarcode.Designer.cs">
+      <DependentUpon>frmInputBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmPrintBarCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmPrintBarCode.Designer.cs">
+      <DependentUpon>frmPrintBarCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmPrintBarCodeConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\BarCode\frmPrintBarCodeConfig.Designer.cs">
+      <DependentUpon>frmPrintBarCodeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BarCode\IBarCode.cs" />
+    <Compile Include="_DEV\BusinessObjMan\CondComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondComboBox.Designer.cs">
+      <DependentUpon>CondComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondDate.Designer.cs">
+      <DependentUpon>CondDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondNumber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondNumber.Designer.cs">
+      <DependentUpon>CondNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\CondText.Designer.cs">
+      <DependentUpon>CondText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\frmObjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\frmObjectManager.Designer.cs">
+      <DependentUpon>frmObjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\BusinessObjMan\ObjectManagerData.cs" />
+    <Compile Include="_DEV\BusinessObjMan\ObjectManagerHelp.cs" />
+    <Compile Include="_DEV\BusinessObjMan\_test\KhachHang.cs" />
+    <Compile Include="_DEV\BusinessObjMan\_test\NhaCungCap.cs" />
+    <Compile Include="_DEV\BusinessObjMan\_test\NhanVien.cs" />
+    <Compile Include="_DEV\BusinessObjMan\_test\PhieuBanHang.cs" />
+    <Compile Include="_DEV\BusinessObjMan\_test\PhieuMuaHang.cs" />
+    <Compile Include="frmFW\Redesign\frmAddressBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmAddressBook.Designer.cs">
+      <DependentUpon>frmAddressBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpCollection.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\DB.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\ExcelSupport.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\frmExportToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmExportToExcel.Designer.cs">
+      <DependentUpon>frmExportToExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmMinImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmMinImport.Designer.cs">
+      <DependentUpon>frmMinImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmResolveDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\frmResolveDM.Designer.cs">
+      <DependentUpon>frmResolveDM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\HelpUtil.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\old\DB.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\old\ExcelSupport.cs" />
+    <Compile Include="_TESTING\ImpExportPlugin\old\frmOldImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\old\frmOldImport.Designer.cs">
+      <DependentUpon>frmOldImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\ImpExportPlugin\PlugIn.cs" />
+    <Compile Include="frmFW\Implements\frmStikiesMain\Config.cs" />
+    <Compile Include="frmFW\Implements\frmStikiesMain\dsConfig.cs">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\dsConfig1.Designer.cs">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\frmCustomizeLook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\frmCustomizeLook.Designer.cs">
+      <DependentUpon>frmCustomizeLook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmStickiesMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmStickiesMain.Designer.cs">
+      <DependentUpon>frmStickiesMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\frmStickyNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\frmStickyNote.Designer.cs">
+      <DependentUpon>frmStickyNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmStikiesMain\GlobalVars.cs" />
+    <Compile Include="frmFW\Implements\frmStikiesMain\Interop.cs" />
+    <Compile Include="frmFW\Implements\frmStikiesMain\StickiesMethodExec.cs" />
+    <Compile Include="frmUserConfig\frmParams\Implements\frmAppParamsHelp.cs" />
+    <Compile Include="frmUserConfig\frmParams\frmAppParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmParams\frmAppParams.Designer.cs">
+      <DependentUpon>frmAppParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Hidden\frmLicence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Hidden\frmLicence.Designer.cs">
+      <DependentUpon>frmLicence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\ctrlFURLFavorites.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\ctrlFURLFavorites.designer.cs">
+      <DependentUpon>ctrlFURLFavorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\ctrlFURLResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\ctrlFURLResult.Designer.cs">
+      <DependentUpon>ctrlFURLResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\frmAddFavorites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\frmAddFavorites.designer.cs">
+      <DependentUpon>frmAddFavorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWFURLBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWFURLBrowser.designer.cs">
+      <DependentUpon>frmFWFURLBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmFURLBrowser\FURLAddressStore.cs" />
+    <Compile Include="frmFW\Implements\frmFURLBrowser\FURLType.cs" />
+    <Compile Include="frmUserConfig\Application\FWPermission.cs" />
+    <Compile Include="frmUserConfig\Application\FWFormName.cs" />
+    <Compile Include="Control\MainControlERP\FWControl.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\PLBandedGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\GridInteraction.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\GridPaging.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\GridValidation.cs" />
+    <Compile Include="Help\HelpGrid.cs" />
+    <Compile Include="Help\HelpGridColumn.cs" />
+    <Compile Include="Help\HelpRepository.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\PagerInfo.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\PLGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Predicate\PLDynamicGrid.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\Predicate\XtraGridSupport.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\Predicate\XtraGridSupportExt.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\RefreshXtraGrid.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryComboboxAdd.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryComboboxAuto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryDMThamTri.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryItemDanhMucAdv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryItemDanhMucExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryItemDataTreeNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryItemDataTreeNewExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\RepositoryPLGridSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\_UPDATE\RepositoryItemSelectDMGridTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\Repository\_UPDATE\RepositoryItemSelectDMTreeGroup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\RowInteraction.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\VGrid\HelpEditorRow.cs" />
+    <Compile Include="Control\MainControl\ControlGrid\_update\PLGridViewUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlGrid\_update\PLGridViewUpdateHelp.cs" />
+    <Compile Include="Help\HelpTreeList.cs" />
+    <Compile Include="Help\HelpTreeColumn.cs" />
+    <Compile Include="Control\MainControl\ControlTree\Predicate\TreeListSupport.cs" />
+    <Compile Include="Control\MainControl\ControlTree\PLTreeList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\ControlTree\TreeValidation.cs" />
+    <Compile Include="Control\MainControl\NumerEdit\PLCalcEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\NumerEdit\PLSpinEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro1\PLFormTitle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmPLWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmPLWord.Designer.cs">
+      <DependentUpon>frmPLWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmTemplateQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmTemplateQL.Designer.cs">
+      <DependentUpon>frmTemplateQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\HelpRichTextBox.cs" />
+    <Compile Include="Control\MainControl\WordEditor\msword\PLMicrosoftWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\PLRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\RightClickWord.cs" />
+    <Compile Include="Control\MainControl\WordEditor\word\PLWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\PLWord.Designer.cs">
+      <DependentUpon>PLWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\FW_DM_PHIEU.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\FW_NGHIEP_VU_SYS.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Demo\FW_ST_NGHIEP_VU.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\GDBException.cs" />
+    <Compile Include="Help\HelpDanhMucDB.cs" />
+    <Compile Include="Help\HelpSQL.cs" />
+    <Compile Include="frmFW\frmConfigDBSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmConfigDBSecurity.Designer.cs">
+      <DependentUpon>frmConfigDBSecurity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmPermissionFail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmPermissionFail.Designer.cs">
+      <DependentUpon>frmPermissionFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDateTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDateTime.Designer.cs">
+      <DependentUpon>PLDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmParams\frmAppReportParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmParams\frmAppReportParams.designer.cs">
+      <DependentUpon>frmAppReportParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmParams\Implements\frmAppReportParamsHelp.cs" />
+    <Compile Include="Help\HelpPhieu\HelpInPhieu.cs" />
+    <Compile Include="Help\HelpPhieu\HelpNghiepVu.cs" />
+    <Compile Include="Help\HelpPhieu\HelpPhieu.cs" />
+    <Compile Include="Help\HelpPhieu\PhieuType.cs" />
+    <Compile Include="Help\HelpPhieu\PLCPhieu.cs" />
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserMan.Designer.cs">
+      <DependentUpon>frmTreeUserMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserManReadEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmTreeUserManReadEditCommit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmUserMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmUserMan.Designer.cs">
+      <DependentUpon>frmUserMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmUserManReadEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\frmUserManReadEditCommit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\UserMan.cs" />
+    <Compile Include="_PREDICATE\DatabaseFBExt.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmGridInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmGridInfo.Designer.cs">
+      <DependentUpon>frmGridInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmTextInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmTextInfo.Designer.cs">
+      <DependentUpon>frmTextInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWUserFormMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWUserFormMan.designer.cs">
+      <DependentUpon>frmFWUserFormMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\PLMessageBoxWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\TimerForm.cs" />
+    <Compile Include="frmUserConfig\sysPermission\Implements\frmUserFormHelp.cs" />
+    <Compile Include="Help\Implements\KeyboardHook.cs" />
+    <Compile Include="Help\HelpKeyboard.cs" />
+    <Compile Include="frmUserConfig\Application\FWShortcutKey.cs" />
+    <Compile Include="HelpPrivate\InternetConn.cs" />
+    <Compile Include="HelpPrivate\WindowUser.cs" />
+    <Compile Include="Help\Implements\CtrlValidation.cs" />
+    <Compile Include="Help\HelpInputData.cs" />
+    <Compile Include="Help\Implements\IValidation.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\DatabaseMan.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\DBObject.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\StoreProcedure.cs" />
+    <Compile Include="frmUserConfig\frmGenerateSQL\Implements\TableName.cs" />
+    <Compile Include="frmUserConfig\sysMenu\Implements\FWStatusBar.cs" />
+    <Compile Include="_PREDICATE\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\MainMenu.cs" />
+    <Compile Include="_PREDICATE\MainToolbar.cs" />
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\CompanyInfo.cs" />
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\CompanyInfoOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\CompanyInfoOption.Designer.cs">
+      <DependentUpon>CompanyInfoOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\DisplayOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\DisplayOption.Designer.cs">
+      <DependentUpon>DisplayOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\FAConfigOption.cs" />
+    <Compile Include="frmUserConfig\frmOptionQL\frmXPOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmOptionQL\frmXPOption.Designer.cs">
+      <DependentUpon>frmXPOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\Application\GlobalConst.cs" />
+    <Compile Include="frmUserConfig\frmOptionQL\Implements\Option.cs" />
+    <Compile Include="_PREDICATE\frmOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmOption.designer.cs">
+      <DependentUpon>frmOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\Report.cs" />
+    <Compile Include="frmUserConfig\sysPermission\Implements\Feature.cs" />
+    <Compile Include="frmFW\frmChangePwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmChangePwd.Designer.cs">
+      <DependentUpon>frmChangePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\frmGroupChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\frmGroupChild.Designer.cs">
+      <DependentUpon>frmGroupChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\frmUserChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\frmUserChild.Designer.cs">
+      <DependentUpon>frmUserChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\PLChonNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\PLChonNhanVien.Designer.cs">
+      <DependentUpon>PLChonNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\frmConfigDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmConfigDB.Designer.cs">
+      <DependentUpon>frmConfigDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPermission\Implements\Group.cs" />
+    <Compile Include="Help\HelpLDAP.cs" />
+    <Compile Include="frmUserConfig\sysPermission\Implements\LDAPUser.cs" />
+    <Compile Include="frmUserConfig\sysPermission\Implements\User.cs" />
+    <Compile Include="Report\Barcode\CRBlank1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRBlank.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Barcode\CRProduct2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRProduct.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmT\frmChartXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmChartXY.Designer.cs">
+      <DependentUpon>frmChartXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\frmChartXYZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmChartXYZ.Designer.cs">
+      <DependentUpon>frmChartXYZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Implements\frmChart\IChart.cs" />
+    <Compile Include="Help\Implements\HelpReportCrystal.cs" />
+    <Compile Include="Help\HelpReport.cs" />
+    <Compile Include="Report\TemplateReport\DynamicSheetReport.cs" />
+    <Compile Include="Report\TemplateReport\frmPrintDynamicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\TemplateReport\HSheetReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HSheetReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\TemplateReport\IDynSheetReport.cs" />
+    <Compile Include="Report\TemplateReport\ReportSchema.cs">
+      <DependentUpon>ReportSchema.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\TemplateReport\ReportSchema.Designer.cs">
+      <DependentUpon>ReportSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\TemplateReport\ReportSchema2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportSchema.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\TemplateReport\VSheetReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VSheetReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmDangXayDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmDangXayDung.Designer.cs">
+      <DependentUpon>frmDangXayDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLy10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\frmPhieuQuanLy1N.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL10Template.Designer.cs">
+      <DependentUpon>frmQL10Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL11Template.Designer.cs">
+      <DependentUpon>frmQL11Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Template\frmQL1NTemplate.Designer.cs">
+      <DependentUpon>frmQL1NTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\frmTimPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmT\Implements\frmPhieuQuanLyXX\IDuyetSupport.cs" />
+    <Compile Include="frmT\Implements\frmPhieuQuanLyXX\PhieuQuanLyUtil.cs" />
+    <Compile Include="Control\_PROCESSING\TrialPLProgressBar.cs" />
+    <Compile Include="Help\Implements\WaitingBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\WaitingBox.Designer.cs">
+      <DependentUpon>WaitingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\DynField\DADynamicField.cs" />
+    <Compile Include="_DEV\DynField\DynamicFieldManMethodExec.cs" />
+    <Compile Include="_DEV\DynField\FieldData.cs" />
+    <Compile Include="_DEV\DynField\PLDynamicField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\DynField\PLDynamicField.designer.cs">
+      <DependentUpon>PLDynamicField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_PROCESSING\PLImgCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDMTreeGroupElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainApp.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\FilterCase.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\FilterControlHelp.cs" />
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmTitleFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\HelpPLCommonDialog\frmTitleFilter.Designer.cs">
+      <DependentUpon>frmTitleFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\LibFilter\TrialPLFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\LibFilter\TrialPLFilter.Designer.cs">
+      <DependentUpon>TrialPLFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\LibFilter\_test\FWMethodExec.cs" />
+    <Compile Include="_DEV\LibLayout\frmTestTrialXtraLayoutControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\LibLayout\frmTestTrialXtraLayoutControl.designer.cs">
+      <DependentUpon>frmTestTrialXtraLayoutControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\LibLayout\HelpFormat.cs" />
+    <Compile Include="_DEV\LibLayout\PLFormLayout.cs" />
+    <Compile Include="_DEV\LibLayout\TrialXtraLayoutControl.cs" />
+    <Compile Include="_DEV\LibLayout\UserCtrl_DieuKienLoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\LibLayout\UserCtrl_DieuKienLoc.Designer.cs">
+      <DependentUpon>UserCtrl_DieuKienLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\LibLayout\XtraUserControlLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_DEV\LibLayout\XtraUserControlLayout.Designer.cs">
+      <DependentUpon>XtraUserControlLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDMGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDMGrid.Designer.cs">
+      <DependentUpon>PLDMGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmIntro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\Redesign\frmIntro.Designer.cs">
+      <DependentUpon>frmIntro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\frmConfigFTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmConfigFTP.Designer.cs">
+      <DependentUpon>frmConfigFTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpDataSetExt.cs" />
+    <Compile Include="Help\HelpImage.cs" />
+    <Compile Include="Help\HelpObject.cs" />
+    <Compile Include="Help\HelpTime.cs" />
+    <Compile Include="Help\HelpXtraForm.cs" />
+    <Compile Include="frmUserConfig\Application\ImageCollectionMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\Application\ImageCollectionMan.Designer.cs">
+      <DependentUpon>ImageCollectionMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\frmInstallDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\frmGenerateSQL\frmInstallDB.Designer.cs">
+      <DependentUpon>frmInstallDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\Application\InstallFramework.cs" />
+    <Compile Include="frmUserConfig\sysPlugins\Implements\PluginManagerOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPlugins\Implements\PluginManagerOption.Designer.cs">
+      <DependentUpon>PluginManagerOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\frmPluginManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmPluginManager.Designer.cs">
+      <DependentUpon>frmPluginManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserConfig\sysPlugins\Implements\PLPlugin.cs" />
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucAdv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucAdvCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucAdvCtrl.Designer.cs">
+      <DependentUpon>TrialPLDanhMucAdvCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro1\TrialPLDocFolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro1\TrialPLDocFolder.designer.cs">
+      <DependentUpon>TrialPLDocFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\Clipboard\TrialClipboardMan.cs" />
+    <Compile Include="_DEV\Clipboard\TrialfrmClipboardItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\Clipboard\TrialfrmClipboardItem.Designer.cs">
+      <DependentUpon>TrialfrmClipboardItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_DEV\Clipboard\TrialfrmClipboardMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_DEV\Clipboard\TrialfrmClipboardMan.designer.cs">
+      <DependentUpon>TrialfrmClipboardMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_PREDICATE\frmFWSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_PREDICATE\frmFWSplash.Designer.cs">
+      <DependentUpon>frmFWSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FW\FWMsgBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\html\PLEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\html\PLEditor.Designer.cs">
+      <DependentUpon>PLEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\html\LinkDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\html\LinkDialog.Designer.cs">
+      <DependentUpon>LinkDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucExtCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucExtCtrl.Designer.cs">
+      <DependentUpon>TrialPLDanhMucExtCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewExtCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewExtCtrl.Designer.cs">
+      <DependentUpon>TrialPLDataTreeNewExtCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Implements\XMessageBoxAction.cs" />
+    <Compile Include="Help\Implements\PLInputBox.cs" />
+    <Compile Include="Help\Implements\PLMessageBoxExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Implements\XMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWLiveUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWLiveUpdate.Designer.cs">
+      <DependentUpon>frmFWLiveUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmFWLockApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmFWLockApplication.Designer.cs">
+      <DependentUpon>frmFWLockApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\frmPLAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmPLAbout.Designer.cs">
+      <DependentUpon>frmPLAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpFTP.cs" />
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLComboboxAdd.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLComboboxInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\frmAddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\frmAddItem.Designer.cs">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro2\PLComboboxAddDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLComboboxAuto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLComboboxAuto.Designer.cs">
+      <DependentUpon>PLComboboxAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDuyetCheckbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDuyetCheckbox.Designer.cs">
+      <DependentUpon>PLDuyetCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro1\TrialPLMonthQuater.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLDMThamTri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TRIAL_NEW_COMPONENT\PLDMThamTri.Designer.cs">
+      <DependentUpon>PLDMThamTri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLTreeCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLTreeCombobox.Designer.cs">
+      <DependentUpon>TrialPLTreeCombobox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFW\Implements\frmBackupRestore\BackupRestoreInfo.cs" />
+    <Compile Include="frmUserConfig\Application\FWImageDic.cs" />
+    <Compile Include="frmFW\frmBackupRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFW\frmBackupRestore.Designer.cs">
+      <DependentUpon>frmBackupRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmT\Implements\frmPhieuQuanLyXX\DataObject.cs">
+    </Compile>
+    <Compile Include="frmUserConfig\Application\Implements\Format.cs" />
+    <Compile Include="frmUserConfig\Application\FWParams.cs" />
+    <Compile Include="frmFW\Implements\frmBackupRestore\DABackupRestore.cs" />
+    <Compile Include="GenerateClass.cs" />
+    <Compile Include="frmUserConfig\Application\Implements\CustomProject.cs" />
+    <Compile Include="Control\MainIntro1\TrialPLDateTimeRange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro1\TrialPLDateTimeRange.Designer.cs">
+      <DependentUpon>TrialPLDateTimeRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\_PROCESSING\PLDateCurrentServerTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLLookupEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLGridCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLGridCombobox.Designer.cs">
+      <DependentUpon>PLGridCombobox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDMTreeGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDMTreeGroup.Designer.cs">
+      <DependentUpon>PLDMTreeGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\HelpControl.cs" />
+    <Compile Include="Control\MainControl\PLDuyetCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLDuyetCombobox.Designer.cs">
+      <DependentUpon>PLDuyetCombobox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PatternSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PatternSelect.Designer.cs">
+      <DependentUpon>PatternSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\DataObjectLib.cs" />
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewCtrl.Designer.cs">
+      <DependentUpon>TrialPLDataTreeNewCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\PLInfoBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\PLInfoBox.Designer.cs">
+      <DependentUpon>PLInfoBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLPopUpButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLPopUpButton.Designer.cs">
+      <DependentUpon>PLPopUpButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLTextNguoiDangNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLTienTeSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\_Predicate\PLTienTeSelect.Designer.cs">
+      <DependentUpon>PLTienTeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\ColorBox.cs" />
+    <Compile Include="Control\MainControl\WordEditor\word\frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmFind.Designer.cs">
+      <DependentUpon>frmFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\MainControl\WordEditor\word\frmReplace.Designer.cs">
+      <DependentUpon>frmReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\PLTienTe\DMFWTienTe.cs" />
+    <Compile Include="_TESTING\PLTienTe\frmCapNhatTiGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_TESTING\PLTienTe\frmCapNhatTiGia.Designer.cs">
+      <DependentUpon>frmCapNhatTiGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\PLTienTe\FW_DM_TIEN_TE.cs" />
+    <Compile Include="_TESTING\PLTienTe\PLCCapNhatTiGia.cs" />
+    <Compile Include="_TESTING\PLTienTe\PLMoneyType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="_TESTING\PLTienTe\PLMoneyType.Designer.cs">
+      <DependentUpon>PLMoneyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_TESTING\VietKeyPlugin\PlugIn.cs" />
+    <Compile Include="_TESTING\VietKeyPlugin\PLVietKey.cs" />
+    <Compile Include="_TESTING\VietKeyPlugin\VietKeyHandler.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="frmUserConfig\sysUserLog\Implements\Readme.txt" />
+    <Content Include="InstallReadme.txt" />
+    <None Include="frmUserConfig\Application\EmbededData\dieu khoan su dung dich vu.rtf" />
+    <None Include="Resources\letter head.word.jpg" />
+    <None Include="Resources\8-9-2010 4-59-11 AM.png" />
+    <Content Include="_DEV\BusinessObjMan\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_DEV\BusinessObjMan\_db.sql" />
+    <None Include="frmUserConfig\frmParams\Implements\frmAppParams.sql" />
+    <None Include="Report\TemplateReport\ReportSchema.xsc">
+      <DependentUpon>ReportSchema.xsd</DependentUpon>
+    </None>
+    <None Include="Report\TemplateReport\ReportSchema.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportSchema2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\TemplateReport\ReportSchema.xss">
+      <DependentUpon>ReportSchema.xsd</DependentUpon>
+    </None>
+    <None Include="frmUserConfig\frmParams\Implements\frmAppReportParams.sql" />
+    <None Include="frmFW\Implements\frmStikiesMain\dsConfig.xsc">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </None>
+    <None Include="frmFW\Implements\frmStikiesMain\dsConfig.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsConfig1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="frmFW\Implements\frmStikiesMain\dsConfig.xss">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\MainControl\ControlGrid\frmGroupIntervalOption.resx">
+      <DependentUpon>frmGroupIntervalOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="English\frmChangePwdEN.resx">
+      <DependentUpon>frmChangePwdEN.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="English\frmLoginEN.resx">
+      <DependentUpon>frmLoginEN.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmCauHinhNghiepVu.resx">
+      <DependentUpon>frmCauHinhNghiepVu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmConfigServer.resx">
+      <DependentUpon>frmConfigServer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmDieuKhoanSuDung.resx">
+      <DependentUpon>frmDieuKhoanSuDung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWUserError.resx">
+      <DependentUpon>frmFWUserError.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWNote.resx">
+      <DependentUpon>frmFWNote.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWPromotionDesktop.resx">
+      <DependentUpon>frmFWPromotionDesktop.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmCauHinhMauPhieu.resx">
+      <DependentUpon>frmCauHinhMauPhieu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmAddressBook\frmContact.resx">
+      <DependentUpon>frmContact.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmAddressBook\frmGroup.resx">
+      <DependentUpon>frmGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmOldFWRunExit.resx">
+      <DependentUpon>frmOldFWRunExit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmOldFWRunFirst.resx">
+      <DependentUpon>frmOldFWRunFirst.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmGopY.resx">
+      <DependentUpon>frmGopY.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmOldConfigDBSecurity.resx">
+      <DependentUpon>frmOldConfigDBSecurity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmNewLogin.resx">
+      <DependentUpon>frmNewLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmOldPLAbout.resx">
+      <DependentUpon>frmOldPLAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmTPhieuThongKeTemplate.resx">
+      <DependentUpon>frmTPhieuThongKeTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmTimPopupTemplate.resx">
+      <DependentUpon>frmTimPopupTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmOptionQL\Redesign\OldDisplayOption.resx">
+      <DependentUpon>OldDisplayOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\frmBaseXtraReport.resx">
+      <DependentUpon>frmBaseXtraReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\Implements\PLCrystalReportViewer.resx">
+      <DependentUpon>PLCrystalReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\frmTreeUserManExtUpdate.resx">
+      <DependentUpon>frmTreeUserManExtUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysWarning\frmAssignUser.resx">
+      <DependentUpon>frmAssignUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysWarning\frmWarningManager.resx">
+      <DependentUpon>frmWarningManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpWaiting\frmProcessFileWait.resx">
+      <DependentUpon>frmProcessFileWait.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Implements\frmTPhieuThongKe\PopupChartOption.resx">
+      <DependentUpon>PopupChartOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpWaiting\frmProgressWait.resx">
+      <DependentUpon>frmProgressWait.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmTimPopupTemplateBandedVertical.resx">
+      <DependentUpon>frmTimPopupTemplateBandedVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL1NTemplateBandedVertical.resx">
+      <DependentUpon>frmQL1NTemplateBandedVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL11TemplateBandedVertical.resx">
+      <DependentUpon>frmQL11TemplateBandedVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL10TemplateBandedVertical.resx">
+      <DependentUpon>frmQL10TemplateBandedVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmTimPopupTemplateBanded.resx">
+      <DependentUpon>frmTimPopupTemplateBanded.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmTimPopupTemplateVertical.resx">
+      <DependentUpon>frmTimPopupTemplateVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL1NTemplateBanded.resx">
+      <DependentUpon>frmQL1NTemplateBanded.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL10TemplateBanded.resx">
+      <DependentUpon>frmQL10TemplateBanded.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL11TemplateBanded.resx">
+      <DependentUpon>frmQL11TemplateBanded.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL1NTemplateVertical.resx">
+      <DependentUpon>frmQL1NTemplateVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL11TemplateVertical.resx">
+      <DependentUpon>frmQL11TemplateVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL10TemplateVertical.resx">
+      <DependentUpon>frmQL10TemplateVertical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\frmCategoryDialog.resx">
+      <DependentUpon>frmCategoryDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\frmSimpleCategory.resx">
+      <DependentUpon>frmSimpleCategory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\Implements\DMBasicGrid.resx">
+      <DependentUpon>DMBasicGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\Implements\DMGrid.resx">
+      <DependentUpon>DMGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroup.resx">
+      <DependentUpon>DMTreeGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\Implements\DMTreeGroupElement.resx">
+      <DependentUpon>DMTreeGroupElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmCategoryQL\PopupFormGridEditDataInPopupForm.resx">
+      <DependentUpon>PopupFormGridEditDataInPopupForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmGenerateSQL\frmGenerateSQL.resx">
+      <DependentUpon>frmGenerateSQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\frmBaseReport.resx">
+      <DependentUpon>frmBaseReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\frmBaseReportExt.resx">
+      <DependentUpon>frmBaseReportExt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\Implements\frmCustomReport.resx">
+      <DependentUpon>frmCustomReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\Implements\frmDataReport.resx">
+      <DependentUpon>frmDataReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\Implements\frmFax.resx">
+      <DependentUpon>frmFax.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmReportQL\Implements\PLXtraPreview.resx">
+      <DependentUpon>PLXtraPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysMenu\frmRibbonMain.resx">
+      <DependentUpon>frmRibbonMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysUserLog\frmUserLog.resx">
+      <DependentUpon>frmUserLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysWarning\frmConfigWarning.resx">
+      <DependentUpon>frmConfigWarning.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\frmPLBrowser\ctrlFavorites.resx">
+      <DependentUpon>ctrlFavorites.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\frmPLBrowser\frmWebBrowser.resx">
+      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmSaveQueryDialog.resx">
+      <DependentUpon>frmSaveQueryDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\frmUserManExt.resx">
+      <DependentUpon>frmUserManExt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLCheckedComboBox.resx">
+      <DependentUpon>PLCheckedComboBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWRunExit.resx">
+      <DependentUpon>frmFWRunExit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmCompanyInfo.resx">
+      <DependentUpon>frmCompanyInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmOldConfigServer.resx">
+      <DependentUpon>frmOldConfigServer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWRunFirst.resx">
+      <DependentUpon>frmFWRunFirst.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BarCode\BarcodeNColMRow.resx">
+      <DependentUpon>BarcodeNColMRow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BarCode\frmBarcodeConfig.resx">
+      <DependentUpon>frmBarcodeConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BarCode\frmInputBarcode.resx">
+      <DependentUpon>frmInputBarcode.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BarCode\frmPrintBarCode.resx">
+      <DependentUpon>frmPrintBarCode.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BarCode\frmPrintBarCodeConfig.resx">
+      <DependentUpon>frmPrintBarCodeConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BusinessObjMan\CondComboBox.resx">
+      <DependentUpon>CondComboBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BusinessObjMan\CondDate.resx">
+      <DependentUpon>CondDate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BusinessObjMan\CondNumber.resx">
+      <DependentUpon>CondNumber.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BusinessObjMan\CondText.resx">
+      <DependentUpon>CondText.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\BusinessObjMan\frmObjectManager.resx">
+      <DependentUpon>frmObjectManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmAddressBook.resx">
+      <DependentUpon>frmAddressBook.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\ImpExportPlugin\frmExportToExcel.resx">
+      <DependentUpon>frmExportToExcel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\ImpExportPlugin\frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\ImpExportPlugin\frmMinImport.resx">
+      <DependentUpon>frmMinImport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\ImpExportPlugin\frmResolveDM.resx">
+      <DependentUpon>frmResolveDM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\ImpExportPlugin\old\frmOldImport.resx">
+      <DependentUpon>frmOldImport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmStikiesMain\frmCustomizeLook.resx">
+      <DependentUpon>frmCustomizeLook.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmStickiesMain.resx">
+      <DependentUpon>frmStickiesMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmStikiesMain\frmStickyNote.resx">
+      <DependentUpon>frmStickyNote.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmParams\frmAppParams.resx">
+      <DependentUpon>frmAppParams.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Hidden\frmLicence.resx">
+      <DependentUpon>frmLicence.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmFURLBrowser\ctrlFURLFavorites.resx">
+      <DependentUpon>ctrlFURLFavorites.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmFURLBrowser\ctrlFURLResult.resx">
+      <DependentUpon>ctrlFURLResult.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Implements\frmFURLBrowser\frmAddFavorites.resx">
+      <DependentUpon>frmAddFavorites.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWFURLBrowser.resx">
+      <DependentUpon>frmFWFURLBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLCombobox.resx">
+      <DependentUpon>PLCombobox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\word\frmPLWord.resx">
+      <DependentUpon>frmPLWord.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\word\frmTemplateQL.resx">
+      <DependentUpon>frmTemplateQL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\msword\PLMicrosoftWord.resx">
+      <DependentUpon>PLMicrosoftWord.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\word\PLWord.resx">
+      <DependentUpon>PLWord.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmGridInfo.resx">
+      <DependentUpon>frmGridInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmTextInfo.resx">
+      <DependentUpon>frmTextInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWUserFormMan.resx">
+      <DependentUpon>frmFWUserFormMan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\PLMessageBoxWin.resx">
+      <DependentUpon>PLMessageBoxWin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmConfigDBSecurity.resx">
+      <DependentUpon>frmConfigDBSecurity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmPermissionFail.resx">
+      <DependentUpon>frmPermissionFail.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDateTime.resx">
+      <DependentUpon>PLDateTime.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmParams\frmAppReportParams.resx">
+      <DependentUpon>frmAppReportParams.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\frmTreeUserMan.resx">
+      <DependentUpon>frmTreeUserMan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\frmUserMan.resx">
+      <DependentUpon>frmUserMan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmOptionQL\Implements\CompanyInfoOption.resx">
+      <DependentUpon>CompanyInfoOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmOptionQL\Implements\DisplayOption.resx">
+      <DependentUpon>DisplayOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmOptionQL\frmXPOption.resx">
+      <DependentUpon>frmXPOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmOption.resx">
+      <DependentUpon>frmOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmChangePwd.resx">
+      <DependentUpon>frmChangePwd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\Implements\frmGroupChild.resx">
+      <DependentUpon>frmGroupChild.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\Implements\frmUserChild.resx">
+      <DependentUpon>frmUserChild.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPermission\Implements\PLChonNhanVien.resx">
+      <DependentUpon>PLChonNhanVien.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmConfigDB.resx">
+      <DependentUpon>frmConfigDB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Barcode\CRBlank.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRBlank1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Barcode\CRProduct.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRProduct2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\frmChartXY.resx">
+      <DependentUpon>frmChartXY.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\frmChartXYZ.resx">
+      <DependentUpon>frmChartXYZ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\TemplateReport\frmPrintDynamicForm.resx">
+      <DependentUpon>frmPrintDynamicForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\TemplateReport\HSheetReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HSheetReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\TemplateReport\VSheetReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VSheetReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmDangXayDung.resx">
+      <DependentUpon>frmDangXayDung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL10Template.resx">
+      <DependentUpon>frmQL10Template.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL11Template.resx">
+      <DependentUpon>frmQL11Template.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmT\Template\frmQL1NTemplate.resx">
+      <DependentUpon>frmQL1NTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\WaitingBox.resx">
+      <DependentUpon>WaitingBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\DynField\PLDynamicField.resx">
+      <DependentUpon>PLDynamicField.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDMTreeGroupElement.resx">
+      <DependentUpon>PLDMTreeGroupElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_PROCESSING\PLImgCombobox.resx">
+      <DependentUpon>PLImgCombobox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDMGrid.resx">
+      <DependentUpon>PLDMGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\Redesign\frmIntro.resx">
+      <DependentUpon>frmIntro.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmConfigFTP.resx">
+      <DependentUpon>frmConfigFTP.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\Application\ImageCollectionMan.resx">
+      <DependentUpon>ImageCollectionMan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\frmGenerateSQL\frmInstallDB.resx">
+      <DependentUpon>frmInstallDB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserConfig\sysPlugins\Implements\PluginManagerOption.resx">
+      <DependentUpon>PluginManagerOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmPluginManager.resx">
+      <DependentUpon>frmPluginManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucAdv.resx">
+      <DependentUpon>TrialPLDanhMucAdv.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucAdvCtrl.resx">
+      <DependentUpon>TrialPLDanhMucAdvCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro1\TrialPLDocFolder.resx">
+      <DependentUpon>TrialPLDocFolder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\Clipboard\TrialfrmClipboardItem.resx">
+      <DependentUpon>TrialfrmClipboardItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\Clipboard\TrialfrmClipboardMan.resx">
+      <DependentUpon>TrialfrmClipboardMan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_PREDICATE\frmFWSplash.resx">
+      <DependentUpon>frmFWSplash.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWLiveUpdate.resx">
+      <DependentUpon>frmFWLiveUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmFWLockApplication.resx">
+      <DependentUpon>frmFWLockApplication.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmPLAbout.resx">
+      <DependentUpon>frmPLAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\html\PLEditor.resx">
+      <DependentUpon>PLEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\html\LinkDialog.resx">
+      <DependentUpon>LinkDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucExt.resx">
+      <DependentUpon>TrialPLDanhMucExt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDanhMucExtCtrl.resx">
+      <DependentUpon>TrialPLDanhMucExtCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewExtCtrl.resx">
+      <DependentUpon>TrialPLDataTreeNewExtCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\frmAddItem.resx">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TRIAL_NEW_COMPONENT\PLComboboxAuto.resx">
+      <DependentUpon>PLComboboxAuto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDuyetCheckbox.resx">
+      <DependentUpon>PLDuyetCheckbox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TRIAL_NEW_COMPONENT\PLDMThamTri.resx">
+      <DependentUpon>PLDMThamTri.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLTreeCombobox.resx">
+      <DependentUpon>TrialPLTreeCombobox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFW\frmBackupRestore.resx">
+      <DependentUpon>frmBackupRestore.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro1\TrialPLDateTimeRange.resx">
+      <DependentUpon>TrialPLDateTimeRange.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLLookupEdit.resx">
+      <DependentUpon>PLLookupEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_PROCESSING\PLDateCurrentServerTime.resx">
+      <DependentUpon>PLDateCurrentServerTime.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_Predicate\PLGridCombobox.resx">
+      <DependentUpon>PLGridCombobox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDMTreeGroup.resx">
+      <DependentUpon>PLDMTreeGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLDuyetCombobox.resx">
+      <DependentUpon>PLDuyetCombobox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PatternSelect.resx">
+      <DependentUpon>PatternSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\PLInfoBox.resx">
+      <DependentUpon>PLInfoBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_Predicate\PLPopUpButton.resx">
+      <DependentUpon>PLPopUpButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_Predicate\PLTextNguoiDangNhap.resx">
+      <DependentUpon>PLTextNguoiDangNhap.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\_Predicate\PLTienTeSelect.resx">
+      <DependentUpon>PLTienTeSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainIntro2\ComboboxUCtrl\TrialPLDataTreeNewCtrl.resx">
+      <DependentUpon>TrialPLDataTreeNewCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\word\frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainControl\WordEditor\word\frmReplace.resx">
+      <DependentUpon>frmReplace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\PLMessageBoxExt.resx">
+      <DependentUpon>PLMessageBoxExt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\XMessageBox.resx">
+      <DependentUpon>XMessageBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Implements\HelpPLCommonDialog\frmTitleFilter.resx">
+      <DependentUpon>frmTitleFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\LibFilter\TrialPLFilter.resx">
+      <DependentUpon>TrialPLFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\LibLayout\frmTestTrialXtraLayoutControl.resx">
+      <DependentUpon>frmTestTrialXtraLayoutControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\LibLayout\UserCtrl_DieuKienLoc.resx">
+      <DependentUpon>UserCtrl_DieuKienLoc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_DEV\LibLayout\XtraUserControlLayout.resx">
+      <DependentUpon>XtraUserControlLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\PLTienTe\frmCapNhatTiGia.resx">
+      <DependentUpon>frmCapNhatTiGia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_TESTING\PLTienTe\PLMoneyType.resx">
+      <DependentUpon>PLMoneyType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App.Bridge\" />
+    <Folder Include="Control\MainControl\ControlGrid\_remove\" />
+    <Folder Include="Control\MainControl\PivotGrid\" />
+    <Folder Include="Control\_NotYetUsing\" />
+    <Folder Include="frmFW\Demo\" />
+    <Folder Include="frmFW\Implements\frmTreeUserManExt\" />
+    <Folder Include="frmUserConfig\frmCategoryQL\Demo\" />
+    <Folder Include="frmUserConfig\frmFURLBrowser\Demo\" />
+    <Folder Include="frmUserConfig\frmFURLBrowser\Implements\" />
+    <Folder Include="HelpPrivate\Implements\" />
+    <Folder Include="NoUsingAtNow\" />
+    <Folder Include="Report\TemplateReport\Demo\" />
+    <Folder Include="_DELETE\" />
+    <Folder Include="_DEV\DynField\_ref\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Notes="&lt;Notes Project=&quot;9334939f-e462-44a6-9859-9132b2c886e6&quot; xmlns=&quot;clr-namespace:StickyNotes.Model;assembly=StickyNotes&quot;&gt;&lt;Notes.StickyNotes&gt;&lt;Note FilePath=&quot;&quot; Content=&quot;&quot; Date=&quot;2009-09-18T05:28:25.5866223+07:00&quot; /&gt;&lt;/Notes.StickyNotes&gt;&lt;/Notes&gt;" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
