@@ -21,7 +21,7 @@ namespace ProtocolVN.Framework.Win.Report.Barcode {
         public CRBlank() {
         }
         
-        public override string ResourceName {
+        public override string ResourceName  {
             get {
                 return "CRBlank.rpt";
             }
