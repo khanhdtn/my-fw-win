@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ProtocolVN.Framework.Core;
 using System.Windows.Forms;
-using DevExpres.Tutor;
+//using DevExpres.Tutor;
 using DevExpress.XtraEditors;
 using ProtocolVN.Plugin.VietInput;
 using ProtocolVN.Framework.Win.Properties;
@@ -131,7 +131,7 @@ namespace ProtocolVN.Framework.Win
                         catch { }
                         //Cập nhật thông tin của Licence
                         if (FrameworkParams.Lic != null)
-                            ((ILicence)FrameworkParams.Lic).updateReleaseLicence("NOOP");
+                            ((DevExpres.Tutor.ILicence)FrameworkParams.Lic).updateReleaseLicence("NOOP");
                         FrameworkParams.Custom.exitApplication();
                         ExitFlag.Value = true;
                     }
@@ -321,14 +321,18 @@ namespace ProtocolVN.Framework.Win
         }
         #endregion  
         
-    
+        public static void initCustom(bool isSupportDeveloper,bool isBeforeLogin)
+        {
+            FrameworkParams.isSupportDeveloper = isSupportDeveloper;
+            FrameworkParams.IsBeforeLogin = isBeforeLogin;
+        }
         
     }
 
 
     public class __PL__{
         private static bool IsFree = true;//True: đang sử dụng FREE; False: đang sử dụng có bản quyền.
-
+        private static bool isUseLicx = true;
         #region FREE LICENCE
         public static object kickFree()
         {
@@ -376,6 +380,13 @@ namespace ProtocolVN.Framework.Win
         public static bool getFree()
         {
             return IsFree;
+        }
+
+
+        public static bool IsUseLicx
+        {
+            get { return isUseLicx; }
+            set { isUseLicx = value; }
         }
     }
 }
