@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolVN.Framework.Win", "ProtocolVN.Framework.Win.csproj", "{9334939F-E462-44A6-9859-9132B2C886E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "did-vlibV1.0", "..\did-vlib\releaseV1.0\did-vlibV1.0.csproj", "{E921636C-D458-40A3-A5FF-C69DFE97069B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,10 +12,6 @@ Global
 		{9334939F-E462-44A6-9859-9132B2C886E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9334939F-E462-44A6-9859-9132B2C886E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9334939F-E462-44A6-9859-9132B2C886E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E921636C-D458-40A3-A5FF-C69DFE97069B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E921636C-D458-40A3-A5FF-C69DFE97069B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E921636C-D458-40A3-A5FF-C69DFE97069B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E921636C-D458-40A3-A5FF-C69DFE97069B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
