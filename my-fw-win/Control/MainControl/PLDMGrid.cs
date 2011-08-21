@@ -37,7 +37,7 @@ namespace ProtocolVN.Framework.Win
         private float _WidthFactor = 2;//Chiều rộng của popup tùy vào số này
         void PLDMGrid_Resize(object sender, EventArgs e)
         {
-            if(isFixPopupContainer == false)
+            if (isFixPopupContainer == false)
                 _CalcSize();
         }
         private void _CalcSize()
@@ -70,7 +70,8 @@ namespace ProtocolVN.Framework.Win
             this.Load += new EventHandler(PLDMGrid_Load);
         }
 
-        
+
+
         public void _init(GroupElementType type, string TableName, string IDField, string DislayField, string[] NameFields,
            string[] Subjects, DMBasicGrid.InitGridColumns InitGridCol, DMBasicGrid.GetRule Rule, DelegationLib.DefinePermission permission, params string[] editField)
         {
@@ -83,11 +84,11 @@ namespace ProtocolVN.Framework.Win
             PLDelegation.ProcessDataRow InsertFunc, PLDelegation.ProcessDataRow DeleteFunc, PLDelegation.ProcessDataRow UpdateFunc,
             params string[] editField)
         {
-            dmGridTemplate1._init(  type, DataSource, IDField, DislayField, NameFields, Subjects, InitGridCol, Rule, permission, 
+            dmGridTemplate1._init(type, DataSource, IDField, DislayField, NameFields, Subjects, InitGridCol, Rule, permission,
                                     InsertFunc, DeleteFunc, UpdateFunc, editField);
             this.DislayField = DislayField;
         }
-        
+
         #endregion
 
         #region Sử dụng
@@ -105,6 +106,7 @@ namespace ProtocolVN.Framework.Win
             {
                 if (flag != -1)
                 {
+                    selectId = id;
                     popupContainerEdit1.Text = dmGridTemplate1.getDislayText();
                     return;
                 }
@@ -177,7 +179,7 @@ namespace ProtocolVN.Framework.Win
         }
         private void popupContainerEdit1_TextChanged(object sender, EventArgs e)
         {
-            if (IsFilter && popupContainerEdit1.EditorContainsFocus && popupContainerEdit1.Text!="")
+            if (IsFilter && popupContainerEdit1.EditorContainsFocus && popupContainerEdit1.Text != "")
             {
                 dmGridTemplate1.Grid.ActiveFilterString = "[" + DislayField + "]" + " Like " + "'%" + popupContainerEdit1.Text + "%'";
                 if (dmGridTemplate1.Grid.RowCount >= 0)
@@ -224,7 +226,7 @@ namespace ProtocolVN.Framework.Win
             throw new NotImplementedException();
         }
 
-        
+
 
         #endregion
 
@@ -246,5 +248,7 @@ namespace ProtocolVN.Framework.Win
             dmGridTemplate1.DefinePermission(permission);
         }
         #endregion
+
+
     }
 }

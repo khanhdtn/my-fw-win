@@ -81,7 +81,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.PopupContainerEdit popupContainerEdit1;
+        public DevExpress.XtraEditors.PopupContainerEdit popupContainerEdit1;
         public DevExpress.XtraEditors.PopupContainerControl popupContainerControl1;
         private DMGrid dmGridTemplate1;
     }

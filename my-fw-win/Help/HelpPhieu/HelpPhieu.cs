@@ -45,7 +45,13 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static GridColumn InitGrid(GridControl gridControl, GridView gridView, bool? IsAdd)
         {
-            GridColumn CotDong = HelpGridColumn.CotPLDong(gridControl, gridView);
+            return InitGrid(gridControl, gridView, IsAdd, true);
+        }
+        /// <summary>Khởi tạo Grid trên phiếu 1 lưới
+        /// </summary>
+        public static GridColumn InitGrid(GridControl gridControl, GridView gridView, bool? IsAdd, bool confirmDelete)
+        {
+            GridColumn CotDong = HelpGridColumn.CotPLDong(gridControl, gridView,confirmDelete);
             if (IsAdd == null)
             {
                 CotDong.Visible = false;
