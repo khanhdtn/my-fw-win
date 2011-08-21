@@ -14,33 +14,37 @@ namespace ProtocolVN.Framework.Win
     /// ProtocolVN.Framework.Win.Temp.PLMultiCombobox sử dụng trong một số form QL, cho phép chọn nhiều điều kiện tìm kiếm
     /// </summary>
     public class PLMultiCombobox : CheckedComboBoxEdit
-    {        
+    {
         // Fields
         private DataTable _DataSource;
         private string _DisplayField;
         private string _ValueField;
+        private bool useSort = true;
+        private List<object[]> _list = new List<object[]>();
 
-        private List<object[]> _list = new List<object[]>(); 
-        
         // Getter, Setter
-        public DataTable DataSource 
-        { 
-            get {
+        public DataTable DataSource
+        {
+            get
+            {
                 return this._DataSource;
-            } 
-            set {
+            }
+            set
+            {
                 this._DataSource = value;
-            } 
+            }
         }
 
-        public string DisplayField 
+        public string DisplayField
         {
-            get {
+            get
+            {
                 return this._DisplayField;
             }
-            set {
+            set
+            {
                 this._DisplayField = value;
-            } 
+            }
         }
 
         public string ValueField
@@ -53,27 +57,53 @@ namespace ProtocolVN.Framework.Win
             {
                 this._ValueField = value;
             }
-        }   
-        
-        public string Text 
-        {
-            get {
-                return base.Text;
-            } 
-        }             
+        }
 
+        public string Text
+        {
+            get
+            {
+                return base.Text;
+            }
+        }
+        /// <summary>
+        /// nếu dùng thì để trước hàm init
+        /// </summary>
+        public bool UseSort
+        {
+            get
+            {
+                return this.useSort;
+            }
+            set
+            {
+                this.useSort = value;
+            }
+        }
         // Constructor
         public PLMultiCombobox() { }
 
         public void _init()
         {
             _clear();
-            DataRow[] rows = this._DataSource.Select("", this._DisplayField);
-            foreach (DataRow row in rows)
+            if (this.useSort)
             {
-                int index = base.Properties.Items.Add(row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField]);
-                object[] objs = new object[] { index, row[this._ValueField] };
-                _list.Add(objs);                
+                DataRow[] rows = this._DataSource.Select("", this._DisplayField);
+                foreach (DataRow row in rows)
+                {
+                    int index = base.Properties.Items.Add(row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField]);
+                    object[] objs = new object[] { index, row[this._ValueField] };
+                    _list.Add(objs);
+                }
+            }
+            else
+            {
+                foreach (DataRow row in this.DataSource.Rows)
+                {
+                    int index = base.Properties.Items.Add(row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField]);
+                    object[] objs = new object[] { index, row[this._ValueField] };
+                    _list.Add(objs);
+                }
             }
         }
 
@@ -114,7 +144,7 @@ namespace ProtocolVN.Framework.Win
                 {
                     foreach (object[] objs in this._list)
                         if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
-                            ID_arr.Add(HelpNumber.ParseInt64(objs[1]));    
+                            ID_arr.Add(HelpNumber.ParseInt64(objs[1]));
                 }
             }
             return ID_arr.ToArray();
@@ -207,7 +237,7 @@ namespace ProtocolVN.Framework.Win
             decimal[] ids = _getSelectedIDsDecimal();
             List<string> list_item_id = new List<string>();
             foreach (decimal item in ids)
-                list_item_id.Add( item.ToString().Replace(',','.'));
+                list_item_id.Add(item.ToString().Replace(',', '.'));
             string str_group = string.Join(",", list_item_id.ToArray());
             if (str_group != "")
                 return "(" + str_group + ")";
@@ -221,21 +251,25 @@ namespace ProtocolVN.Framework.Win
         public void _setSelectedIDs(long[] ID_array)
         {
             StringBuilder builder = new StringBuilder();
-            for (int i=0; i<ID_array.Length; i++)
+            for (int i = 0; i < ID_array.Length; i++)
             {
                 foreach (object[] objs in this._list)
                 {
                     if (HelpNumber.ParseInt64(objs[1]) == ID_array[i])
                     {
-                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = 
+                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
                             System.Windows.Forms.CheckState.Checked;
                         builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
                         if (i < ID_array.Length - 1)
                             builder.Append(", ");
                     }
+                    else
+                    {
+                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
+                    }
                 }
             }
-            if(ID_array.Length > 0)
+            if (ID_array.Length > 0)
                 this.EditValue = builder.ToString();
         }
         /// <summary>
@@ -249,13 +283,17 @@ namespace ProtocolVN.Framework.Win
             {
                 foreach (object[] objs in this._list)
                 {
-                    if (objs[1].ToString()==ID_array[i].Replace("'",""))
+                    if (objs[1].ToString() == ID_array[i].Replace("'", ""))
                     {
                         base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
                             System.Windows.Forms.CheckState.Checked;
                         builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
                         if (i < ID_array.Length - 1)
                             builder.Append("; ");
+                    }
+                    else
+                    {
+                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
                     }
                 }
             }
@@ -273,7 +311,7 @@ namespace ProtocolVN.Framework.Win
                         ((DataTable)view.GridControl.DataSource).Rows.Count == 0) return;
                     col.ClearFilter();
                     string IDString = this._getStrSelectedIDs();
-                    if (IDString == "(-1)") return; 
+                    if (IDString == "(-1)") return;
                     if (view.ActiveFilterString == "")
                     {
                         view.ActiveFilterString = col.FieldName + " in " + IDString;
@@ -296,13 +334,13 @@ namespace ProtocolVN.Framework.Win
             {
                 this.CloseUp += delegate(object sender, CloseUpEventArgs e)
                 {
-                    DevExpress.XtraGrid.Views.Grid.GridView view = col.View as DevExpress.XtraGrid.Views.Grid.GridView;                  
+                    DevExpress.XtraGrid.Views.Grid.GridView view = col.View as DevExpress.XtraGrid.Views.Grid.GridView;
                     col.ClearFilter();
                     string DecString = this._getStrSelectedIDsDecimal();
-                    if (DecString == "(-1)") return;                   
+                    if (DecString == "(-1)") return;
                     if (view.ActiveFilterString == "")
                     {
-                        view.ActiveFilterString =col.FieldName+" in "+DecString;
+                        view.ActiveFilterString = col.FieldName + " in " + DecString;
                     }
                     else
                     {
