@@ -188,12 +188,12 @@ namespace ProtocolVN.Framework.Win
             //this.btnXemTruoc.Image = FWImageDic.PREVIEW_IMAGE16;
 
             int newMainPanleHeght = 0;
-            if (ListMaPhieu.Count == 0)
-            {
-                HelpMsgBox.ShowNotificationMessage("Chưa có mã phiếu để cấu hình!");
-                HelpXtraForm.CloseFormHasConfirm(this);
-                return;
-            }
+            //if (ListMaPhieu.Count == 0)
+            //{
+            //    HelpMsgBox.ShowNotificationMessage("Chưa có mã phiếu để cấu hình!");
+            //    HelpXtraForm.CloseFormHasConfirm(this);
+            //    return;
+            //}
 
             foreach (int key in ListMaPhieu.Keys)
             {
@@ -203,7 +203,7 @@ namespace ProtocolVN.Framework.Win
                 ps.f_setValue(ListMaPhieu[key].Split(';')[0]);
 
                 LabelControl lbl = new LabelControl();
-                lbl.Text = "Phiếu " + ListMaPhieu[key].Split(';')[1];
+                lbl.Text = ListMaPhieu[key].Split(';')[1];
                 lbl.ToolTip = lbl.Text;
                 lbl.AutoSizeMode = LabelAutoSizeMode.None;
                 lbl.AutoEllipsis = true;
