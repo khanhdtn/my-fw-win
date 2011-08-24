@@ -148,14 +148,18 @@ namespace ProtocolVN.Framework.Win
             return lookup;
         }
 
-        public static RepositoryItemTimeEdit GetCotPLTimeEdit(String Format)
+        public static RepositoryItemTimeEdit GetCotPLTimeEdit(String Format, HourFormat HFormat)
         {
             RepositoryItemTimeEdit timeEdit = new RepositoryItemTimeEdit();
             timeEdit.Mask.EditMask = Format;
-            timeEdit.Mask.UseMaskAsDisplayFormat = true;
+            timeEdit.HourFormat = HFormat;
+            timeEdit.Mask.UseMaskAsDisplayFormat = true;           
             return timeEdit;
         }
-
+        public static RepositoryItemTimeEdit GetCotPLTimeEdit(String Format)
+        {
+            return GetCotPLTimeEdit(Format, HourFormat.Default);
+        }
         public static RepositoryItemTimeEdit GetCotPLShortTimeEdit()
         {
             RepositoryItemTimeEdit timeEdit = new RepositoryItemTimeEdit();
