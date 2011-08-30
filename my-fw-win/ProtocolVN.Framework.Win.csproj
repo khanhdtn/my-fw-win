@@ -304,6 +304,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\Kian\PLDMTreeMultiChoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Kian\PLDMTreeMultiChoice.Designer.cs">
+      <DependentUpon>PLDMTreeMultiChoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\MainControl\ControlGrid\frmGroupIntervalOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1829,6 +1835,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Control\Kian\PLDMTreeMultiChoice.resx">
+      <DependentUpon>PLDMTreeMultiChoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\MainControl\ControlGrid\frmGroupIntervalOption.resx">
       <DependentUpon>frmGroupIntervalOption.cs</DependentUpon>
       <SubType>Designer</SubType>
