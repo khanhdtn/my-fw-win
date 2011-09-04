@@ -237,6 +237,7 @@ namespace ProtocolVN.Framework.Win
                 soPhieu.Text = value;
                 soPhieu.Properties.ReadOnly = true;
                 soPhieu.Enabled = true;
+                soPhieu.TabStop = false;
             }
             else
             {
