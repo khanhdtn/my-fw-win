@@ -202,9 +202,8 @@ namespace ProtocolVN.Framework.Win
             }
             set
             {
-                this.SelectedIDs = new List<long>(value);
-                _UnChekedAll();
                 SetCheckedValues(value);
+                UpdateSelectedID();
             }
         }
 
@@ -237,13 +236,9 @@ namespace ProtocolVN.Framework.Win
             {
                 if (value != null)
                 {
-                    string[] ids = value.Split(',');
-                    this.SelectedIDs = new List<long>();
-                    foreach (string s in ids)
-                    {
-                        SelectedIDs.Add(HelpNumber.ParseInt64(s));
-                    }
+                    string[] ids = value.Split(',');   
                     SetCheckedValues(this.SelectedIDs.ToArray());
+                    UpdateSelectedID();
                 }
             }
         }
@@ -277,6 +272,8 @@ namespace ProtocolVN.Framework.Win
                 n.Checked = false;
                 SetCheckedChildNodes(n, CheckState.Unchecked);
             }
+            SelectedIDs.Clear();
+            SelectedNames = "";
         }
         public void _CheckedAll()
         {
@@ -285,6 +282,7 @@ namespace ProtocolVN.Framework.Win
                 n.Checked = true;
                 SetCheckedChildNodes(n, CheckState.Checked);
             }
+            UpdateSelectedID();
         }
         public void _SetError(DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider error, string message)
         {
@@ -306,7 +304,7 @@ namespace ProtocolVN.Framework.Win
             for (int i = 0; i < node.Nodes.Count; i++)
             {
                 node.Nodes[i].CheckState = check;
-                SetCheckedChildNodes(node.Nodes[i], check);
+                SetCheckedChildNodes(node.Nodes[i], check);              
             }
         }
         private void SetCheckedParentNodes(TreeListNode node, CheckState check)
@@ -377,20 +375,7 @@ namespace ProtocolVN.Framework.Win
         {
             if (CloseNoAccept == false)
             {
-
-                SelectedIDs = new List<long>();
-                SelectedNames = "";
-                if (IsGroup_Child)
-                {
-                    AcceptSelectedNode_GroupChild(treeList.Nodes);
-                }
-                else
-                {
-                    AcceptSelectedNode(treeList.Nodes);
-                }
-                SelectedNames = SelectedNames.TrimEnd(',');
-                this.popupContainerEdit1.EditValue = SelectedIDs;
-                this.popupContainerEdit1.ToolTip = SelectedNames;
+                UpdateSelectedID();               
                 e.Value = SelectedNames;
                 if (_AfterSelected != null)
                     _AfterSelected(this, new EventArgs());
@@ -401,10 +386,27 @@ namespace ProtocolVN.Framework.Win
                 SetCheckedValues(SelectedIDs.ToArray());
             }
         }
+        private void UpdateSelectedID()
+        {
+            SelectedIDs = new List<long>();
+            SelectedNames = "";
+            if (IsGroup_Child)
+            {
+                AcceptSelectedNode_GroupChild(treeList.Nodes);
+            }
+            else
+            {
+                AcceptSelectedNode(treeList.Nodes);
+            }
+            SelectedNames = SelectedNames.TrimEnd(',');
+            this.popupContainerEdit1.Text = SelectedNames;
+            this.popupContainerEdit1.ToolTip = SelectedNames;
+        }
         private void SetCheckedValues(long[] IDs)
         {
             _UnChekedAll();
             SelectedNames = "";
+            SelectedIDs = new List<long>();
             foreach (long id in IDs)
             {
 
