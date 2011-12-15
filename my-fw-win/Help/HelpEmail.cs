@@ -10,12 +10,12 @@ using ProtocolVN.Framework.Core;
 using System.Net;
 using System.IO;
 using System.Data.Common;
-using Syncfusion.DocIO.DLS;
 using LumiSoft.MailServer.API.UserAPI;
 using System.Collections.Specialized;
 using System.Collections;
 using LumiSoft.Net.Mime;
 using LumiSoft.Net.SMTP.Client;
+using Syncfusion.DocIO.DLS;
 
 namespace ProtocolVN.Framework.Win
 {
