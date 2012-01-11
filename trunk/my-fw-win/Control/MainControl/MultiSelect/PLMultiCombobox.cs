@@ -34,7 +34,22 @@ namespace ProtocolVN.Framework.Win
                 this._DataSource = value;
             }
         }
+        /// <summary>
+        /// Xác định xem có chọn tất cả hoặc không chọn item nào hay ko
+        /// </summary>
+        public bool _IsNotCheckAnyOrCheckedAll
+        {
+            get
+            {
+                string checkItems = this.Properties.GetCheckedItems().ToString();
+                if(checkItems=="") return true;//Not checked any items
+                string[] length = checkItems.Split(',');
+                if(length.Length==this.Properties.Items.Count) return true ;//checked all
+                return false;
+            }
+        }
 
+           
         public string DisplayField
         {
             get
