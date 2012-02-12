@@ -106,18 +106,19 @@ namespace ProtocolVN.Framework.Win
                 DataRow[] rows = this._DataSource.Select("", this._DisplayField);
                 foreach (DataRow row in rows)
                 {
-                    int index = base.Properties.Items.Add(row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField]);
-                    object[] objs = new object[] { index, row[this._ValueField] };
-                    _list.Add(objs);
+                    int index = base.Properties.Items.Add(row[this._ValueField], row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField].ToString());
+                   // object[] objs = new object[] { index, row[this._ValueField] };
+                    //_list.Add(objs);
                 }
             }
             else
             {
                 foreach (DataRow row in this.DataSource.Rows)
                 {
-                    int index = base.Properties.Items.Add(row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField]);
-                    object[] objs = new object[] { index, row[this._ValueField] };
-                    _list.Add(objs);
+                
+                    int index = base.Properties.Items.Add(row[this._ValueField],row[this._DisplayField].ToString() == "" ? "" : row[this._DisplayField].ToString());
+                    //object[] objs = new object[] { index, row[this._ValueField] };
+                   // _list.Add(objs);
                 }
             }
         }
@@ -152,17 +153,21 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public long[] _getSelectedIDs()
         {
-            List<long> ID_arr = new List<long>();
-            foreach (CheckedListBoxItem item in base.Properties.Items)
-            {
-                if (item.CheckState == System.Windows.Forms.CheckState.Checked)
-                {
-                    foreach (object[] objs in this._list)
-                        if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
-                            ID_arr.Add(HelpNumber.ParseInt64(objs[1]));
-                }
-            }
-            return ID_arr.ToArray();
+            string chekedIDs = this._getStrSelectedIDs();
+            chekedIDs = chekedIDs.TrimStart('(').TrimEnd(')');
+            string[] IDs = chekedIDs.Split(',');
+            return Array.ConvertAll<string, long>(IDs, new Converter<string, long>(HelpNumber.ParseInt64));
+            //List<long> ID_arr = new List<long>();
+            //foreach (CheckedListBoxItem item in base.Properties.Items)
+            //{
+            //    if (item.CheckState == System.Windows.Forms.CheckState.Checked)
+            //    {
+            //        foreach (object[] objs in this._list)
+            //            if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
+            //                ID_arr.Add(HelpNumber.ParseInt64(objs[1]));
+            //    }
+            //}
+            //return ID_arr.ToArray();
         }
         /// <summary>
         /// Trả về 1 mảng kiểu decimail các ID được chọn
@@ -170,17 +175,21 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public decimal[] _getSelectedIDsDecimal()
         {
-            List<decimal> ID_arr = new List<decimal>();
-            foreach (CheckedListBoxItem item in base.Properties.Items)
-            {
-                if (item.CheckState == System.Windows.Forms.CheckState.Checked)
-                {
-                    foreach (object[] objs in this._list)
-                        if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
-                            ID_arr.Add(HelpNumber.ParseDecimal(objs[1]));
-                }
-            }
-            return ID_arr.ToArray();
+            string chekedIDs = this._getStrSelectedIDs();
+            chekedIDs = chekedIDs.TrimStart('(').TrimEnd(')');
+            string[] IDs = chekedIDs.Split(',');
+            return Array.ConvertAll<string, decimal>(IDs, new Converter<string, decimal>(HelpNumber.ParseDecimal));
+            //List<decimal> ID_arr = new List<decimal>();
+            //foreach (CheckedListBoxItem item in base.Properties.Items)
+            //{
+            //    if (item.CheckState == System.Windows.Forms.CheckState.Checked)
+            //    {
+            //        foreach (object[] objs in this._list)
+            //            if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
+            //                ID_arr.Add(HelpNumber.ParseDecimal(objs[1]));
+            //    }
+            //}
+            //return ID_arr.ToArray();
         }
 
         /// <summary>
@@ -190,17 +199,19 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public string[] _getSelectedNAMEs()
         {
-            List<string> NAME_arr = new List<string>();
-            foreach (CheckedListBoxItem item in base.Properties.Items)
-            {
-                if (item.CheckState == System.Windows.Forms.CheckState.Checked)
-                {
-                    foreach (object[] objs in this._list)
-                        if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
-                            NAME_arr.Add("'" + objs[1].ToString() + "'");
-                }
-            }
-            return NAME_arr.ToArray();
+            string ids = _getStrSelectedNAMEs().TrimStart('(').TrimEnd(')');
+            return ids.Split(',');
+            //List<string> NAME_arr = new List<string>();
+            //foreach (CheckedListBoxItem item in base.Properties.Items)
+            //{
+            //    if (item.CheckState == System.Windows.Forms.CheckState.Checked)
+            //    {
+            //        foreach (object[] objs in this._list)
+            //            if (HelpNumber.ParseInt32(objs[0]) == base.Properties.Items.IndexOf(item))
+            //                NAME_arr.Add("'" + objs[1].ToString() + "'");
+            //    }
+            //}
+            //return NAME_arr.ToArray();
         }
 
         /// <summary>
@@ -209,14 +220,17 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public string _getStrSelectedIDs()
         {
-            long[] ids = _getSelectedIDs();
-            List<string> list_item_id = new List<string>();
-            foreach (long item in ids)
-                list_item_id.Add(item.ToString());
-            string str_group = string.Join(",", list_item_id.ToArray());
-            if (str_group != "")
-                return "(" + str_group + ")";
-            return "(-1)";
+            //long[] ids = _getSelectedIDs();
+            //List<string> list_item_id = new List<string>();
+            //foreach (long item in ids)
+            //    list_item_id.Add(item.ToString());
+            //string str_group = string.Join(",", list_item_id.ToArray());
+            //if (str_group != "")
+            //    return "(" + str_group + ")";
+            object checkedItem = this.Properties.GetCheckedItems();
+            if (checkedItem == null || checkedItem.ToString() == "")
+                return "(-1)";
+            return "(" + checkedItem.ToString().Replace(", ", ",") + ")";
         }
 
         /// <summary>
@@ -225,11 +239,14 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public string _getStrSelectedNAMEs()
         {
-            string[] names = _getSelectedNAMEs();
-            string str_group = string.Join(",", names);
-            if (str_group != "")
-                return "(" + str_group + ")";
-            return "('-1')";
+            object checkedItem = this.Properties.GetCheckedItems();
+            if (checkedItem == null || checkedItem.ToString() == "")
+                return "('-1')";
+            return "('" + checkedItem.ToString().Replace(", ", "','") + "')";//string[] names = _getSelectedNAMEs();
+            //string str_group = string.Join(",", names);
+            //if (str_group != "")
+            //    return "(" + str_group + ")";
+            //return "('-1')";
         }
         /// <summary>
         /// Trả về chuỗi các NAME được chọn, phân cách bởi dấu ';' và nằm trong ()
@@ -237,11 +254,12 @@ namespace ProtocolVN.Framework.Win
         /// <returns></returns>
         public string _getStrSelectedNAMEsChamPhay()
         {
-            string[] names = _getSelectedNAMEs();
-            string str_group = string.Join(";", names);
-            if (str_group != "")
-                return "(" + str_group + ")";
-            return "('-1')";
+            return _getStrSelectedNAMEs().Replace(',', ';');
+            //string[] names = _getSelectedNAMEs();
+            //string str_group = string.Join(";", names);
+            //if (str_group != "")
+            //    return "(" + str_group + ")";
+            //return "('-1')";
         }
         /// <summary>
         /// Trả về chuỗi các giá trị ID kiểu decimal được chọn, phân cách bởi dấu ',' và nằm trong ()
@@ -265,27 +283,42 @@ namespace ProtocolVN.Framework.Win
         /// <param name="ID_array">Mảng các ID cần khởi tạo</param>
         public void _setSelectedIDs(long[] ID_array)
         {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < ID_array.Length; i++)
+            foreach (CheckedListBoxItem item in base.Properties.Items)
             {
-                foreach (object[] objs in this._list)
+                bool check = false;
+                foreach (long id in ID_array)
                 {
-                    if (HelpNumber.ParseInt64(objs[1]) == ID_array[i])
+                    if (item.Value.ToString() == id.ToString())
                     {
-                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
-                            System.Windows.Forms.CheckState.Checked;
-                        builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
-                        if (i < ID_array.Length - 1)
-                            builder.Append(", ");
-                    }
-                    else
-                    {
-                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
+                        item.CheckState = System.Windows.Forms.CheckState.Checked;
+                        check = true;
+                        break;
                     }
                 }
+                if (check == false) item.CheckState = System.Windows.Forms.CheckState.Unchecked;
+                
             }
-            if (ID_array.Length > 0)
-                this.EditValue = builder.ToString();
+            //StringBuilder builder = new StringBuilder();
+            //for (int i = 0; i < ID_array.Length; i++)
+            //{
+            //    foreach (object[] objs in this._list)
+            //    {
+            //        if (HelpNumber.ParseInt64(objs[1]) == ID_array[i])
+            //        {
+           //            base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
+            //                System.Windows.Forms.CheckState.Checked;
+            //            builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
+            //            if (i < ID_array.Length - 1)
+            //                builder.Append(", ");
+            //        }
+            //        else
+            //        {
+            //            base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
+            //        }
+            //    }
+            //}
+            //if (ID_array.Length > 0)
+            //    this.EditValue = builder.ToString();
         }
         /// <summary>
         /// Truyền vào 1 mảng string các giá trị
@@ -293,27 +326,42 @@ namespace ProtocolVN.Framework.Win
         /// <param name="ID_array"></param>
         public void _setSelectedIDs(string[] ID_array)
         {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < ID_array.Length; i++)
+            foreach (CheckedListBoxItem item in base.Properties.Items)
             {
-                foreach (object[] objs in this._list)
+                bool check = false;
+                foreach (string id in ID_array)
                 {
-                    if (objs[1].ToString() == ID_array[i].Replace("'", ""))
+                    if (item.Value.ToString() == id)
                     {
-                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
-                            System.Windows.Forms.CheckState.Checked;
-                        builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
-                        if (i < ID_array.Length - 1)
-                            builder.Append("; ");
-                    }
-                    else
-                    {
-                        base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
+                        item.CheckState = System.Windows.Forms.CheckState.Checked;
+                        check = true;
+                        break;
                     }
                 }
+                if (check == false) item.CheckState = System.Windows.Forms.CheckState.Unchecked;
+
             }
-            if (ID_array.Length > 0)
-                this.EditValue = builder.ToString();
+            //StringBuilder builder = new StringBuilder();
+            //for (int i = 0; i < ID_array.Length; i++)
+            //{
+            //    foreach (object[] objs in this._list)
+            //    {
+            //        if (objs[1].ToString() == ID_array[i].Replace("'", ""))
+            //        {
+            //            base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState =
+            //                System.Windows.Forms.CheckState.Checked;
+            //            builder.Append(base.Properties.Items[HelpNumber.ParseInt32(objs[0])].Value);
+            //            if (i < ID_array.Length - 1)
+            //                builder.Append("; ");
+            //        }
+            //        else
+            //        {
+            //            base.Properties.Items[HelpNumber.ParseInt32(objs[0])].CheckState = System.Windows.Forms.CheckState.Unchecked;
+            //        }
+            //    }
+            //}
+            //if (ID_array.Length > 0)
+            //    this.EditValue = builder.ToString();
         }
         public void _setFilterGridStringID(GridColumn col)
         {
