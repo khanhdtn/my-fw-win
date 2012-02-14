@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
 using ProtocolVN.Framework.Core;
 using DevExpress.XtraGrid;
+using System.Windows.Forms;
 
 namespace ProtocolVN.Framework.Win
 {
@@ -11,17 +12,26 @@ namespace ProtocolVN.Framework.Win
         public static void SetMaxLength(object[] Ctrl)
         {
             if (Ctrl == null) return;
+            object c=null;
+            object l=null;
             for (int i = 0; i < Ctrl.Length; i = i + 2)
             {
-                if (Ctrl[i].GetType().FullName == typeof(TextEdit).FullName)
+                c=Ctrl[i];
+                l=Ctrl[i+1];
+                if (c is TextEdit)
                 {
-                    TextEdit temp = Ctrl[i] as TextEdit;
-                    temp.Properties.MaxLength = (int)Ctrl[i + 1];
+                    TextEdit temp = c as TextEdit;
+                    temp.Properties.MaxLength = (int)l;
                 }
-                else if (Ctrl[i].GetType().FullName == typeof(MemoEdit).FullName)
+                else if (c is MemoEdit)
                 {
-                    MemoEdit temp = Ctrl[i] as MemoEdit;
-                    temp.Properties.MaxLength = (int)Ctrl[i + 1];
+                    MemoEdit temp = c as MemoEdit;
+                    temp.Properties.MaxLength = (int)l;
+                }
+                else if (c is MRUEdit)
+                {
+                    MRUEdit temp = c as MRUEdit;
+                    temp.Properties.MaxLength = (int)l;
                 }
                 else
                 {
