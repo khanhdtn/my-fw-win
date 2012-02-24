@@ -99,7 +99,7 @@ namespace ProtocolVN.Framework.Win
             DatabaseFB db = DABase.getDatabase();
             DbCommand dbSelect = db.GetSQLStringCommand("SELECT NAME,TRADENAME,REPRESENTATIVE,ADDRESS,PHONE,FAX,EMAIL,WEBSITE,LOGO,ACCOUNTNO,BANKNAME,TAXCODE,HEADER_LETTER" +
                                                         " FROM COMPANY_INFO WHERE ID=@ID");
-            db.AddInParameter(dbSelect, "@ID", DbType.Int64, 1);
+            db.AddInParameter(dbSelect, "@ID", DbType.Int64, FrameworkParams.LoginCompany);
             IDataReader reader = db.ExecuteReader(dbSelect);
             if (reader.Read())
             {
@@ -126,8 +126,8 @@ namespace ProtocolVN.Framework.Win
            string email, string website, byte[] logo, string accountNo, string bankName, string taxCode, byte[] headerletter)
         //PHUOC OK
         {
-            DatabaseFB db = DABase.getDatabase();            
-            DataSet ds = db.LoadDataSet("select * from COMPANY_INFO WHERE ID=1", "COMPANY_INFO");
+            DatabaseFB db = DABase.getDatabase();
+            DataSet ds = db.LoadDataSet("select * from COMPANY_INFO WHERE ID=" + FrameworkParams.LoginCompany, "COMPANY_INFO");
             ds.Tables[0].Rows[0]["name"] = name;
             ds.Tables[0].Rows[0]["tradename"] = tradeName;
             ds.Tables[0].Rows[0]["representative"] = representative;

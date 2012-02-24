@@ -154,7 +154,9 @@ namespace ProtocolVN.Framework.Win
         public long[] _getSelectedIDs()
         {
             string chekedIDs = this._getStrSelectedIDs();
+
             chekedIDs = chekedIDs.TrimStart('(').TrimEnd(')');
+            if (chekedIDs == "-1") return new long[0];
             string[] IDs = chekedIDs.Split(',');
             return Array.ConvertAll<string, long>(IDs, new Converter<string, long>(HelpNumber.ParseInt64));
             //List<long> ID_arr = new List<long>();
