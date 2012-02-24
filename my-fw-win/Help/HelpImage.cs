@@ -47,6 +47,22 @@ namespace ProtocolVN.Framework.Win
                 PLException.AddException(ex);
             }
         }
+        public static Image LoadImage( byte[] logo)
+        {
+            try
+            {
+                if (logo == null) return null;
+                MemoryStream stream = new MemoryStream(logo);
+                Bitmap image = new Bitmap(stream);
+
+                return image;
+            }
+            catch (Exception ex)
+            {
+                PLException.AddException(ex);
+            }
+            return null;
+        }
 
         public static byte[] GetBytes(Image jpegImg)
         {

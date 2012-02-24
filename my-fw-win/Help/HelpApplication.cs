@@ -307,8 +307,8 @@ namespace ProtocolVN.Framework.Win
 
         public static void initPackageReleaseA()
         {
-            if (FrameworkParams.LoginCompany <= 0)
-                FrameworkParams.LoginCompany = 1;
+            if (FrameworkParams.LoginCompanyID <= 0)
+                FrameworkParams.LoginCompanyID = 1;
             FrameworkParams.IsCheckNewVersion = false;
             FrameworkParams.IsUpdateVersionAtLocalServer = false;
             FrameworkParams.IsTrial = false;
@@ -357,6 +357,7 @@ namespace ProtocolVN.Framework.Win
                     Bitmap image = new Bitmap(stream);
                     FrameworkParams.headerLetter = new ImageHeaderStartTitleGridEndFooter(image);
                 }
+                FrameworkParams.LoginCompanyInfo = company;
             }
             catch (Exception ex)
             {

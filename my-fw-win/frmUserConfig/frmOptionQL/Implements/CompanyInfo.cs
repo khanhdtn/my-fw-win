@@ -15,6 +15,7 @@ namespace ProtocolVN.Framework.Win
         public string email;
         public string website;
         public byte[] logo;
+        public Image logoImg;
         public string accountNo;
         public string bankName;
         public string taxCode;
@@ -64,6 +65,7 @@ namespace ProtocolVN.Framework.Win
             this.bankName = tmp.bankName;
             this.taxCode = tmp.taxCode;
             this.headerletter = tmp.headerletter;
+            this.logoImg = HelpImage.LoadImage(this.logo);
         }
 
         public static byte[] readBitmap2ByteArray(string fileName)
@@ -99,7 +101,7 @@ namespace ProtocolVN.Framework.Win
             DatabaseFB db = DABase.getDatabase();
             DbCommand dbSelect = db.GetSQLStringCommand("SELECT NAME,TRADENAME,REPRESENTATIVE,ADDRESS,PHONE,FAX,EMAIL,WEBSITE,LOGO,ACCOUNTNO,BANKNAME,TAXCODE,HEADER_LETTER" +
                                                         " FROM COMPANY_INFO WHERE ID=@ID");
-            db.AddInParameter(dbSelect, "@ID", DbType.Int64, FrameworkParams.LoginCompany);
+            db.AddInParameter(dbSelect, "@ID", DbType.Int64, FrameworkParams.LoginCompanyID);
             IDataReader reader = db.ExecuteReader(dbSelect);
             if (reader.Read())
             {
@@ -127,7 +129,7 @@ namespace ProtocolVN.Framework.Win
         //PHUOC OK
         {
             DatabaseFB db = DABase.getDatabase();
-            DataSet ds = db.LoadDataSet("select * from COMPANY_INFO WHERE ID=" + FrameworkParams.LoginCompany, "COMPANY_INFO");
+            DataSet ds = db.LoadDataSet("select * from COMPANY_INFO WHERE ID=" + FrameworkParams.LoginCompanyID, "COMPANY_INFO");
             ds.Tables[0].Rows[0]["name"] = name;
             ds.Tables[0].Rows[0]["tradename"] = tradeName;
             ds.Tables[0].Rows[0]["representative"] = representative;
