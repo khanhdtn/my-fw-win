@@ -274,6 +274,7 @@ namespace ProtocolVN.Framework.Win
             }
             SelectedIDs.Clear();
             SelectedNames = "";
+            this.popupContainerEdit1.Text = "";
         }
         public void _CheckedAll()
         {
