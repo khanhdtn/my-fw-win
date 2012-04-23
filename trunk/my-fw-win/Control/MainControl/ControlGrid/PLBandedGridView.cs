@@ -150,6 +150,12 @@ namespace DevExpress.XtraGrid.Views.BandedGrid
             this.CotSoTT();
             this.DataSourceChanged += new EventHandler(gridview_DataSourceChanged);
             this.KeyUp += new KeyEventHandler(PLGridView_KeyUp);
+            this.RowCountChanged += new EventHandler(PLBandedGridView_RowCountChanged);
+        }
+
+        void PLBandedGridView_RowCountChanged(object sender, EventArgs e)
+        {
+            this.BestFitColumns();
         }
 
         void PLGridView_KeyUp(object sender, KeyEventArgs e)
@@ -927,6 +933,7 @@ namespace DevExpress.XtraGrid.Views.BandedGrid
         private void itemScrollLayOut1_Click(object sender, EventArgs e)
         {
             this.OptionsView.ColumnAutoWidth = true;
+            this.BestFitColumns();
         }
         private void itemSaveLayOut_Click(object sender, EventArgs e)
         {
