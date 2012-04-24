@@ -59,7 +59,7 @@ namespace ProtocolVN.Framework.Win
             msg.SubjectEncoding = System.Text.Encoding.UTF8;
             msg.Body = body;
             msg.BodyEncoding = System.Text.Encoding.UTF8;
-            msg.IsBodyHtml = false;
+            msg.IsBodyHtml = true;
             msg.Priority = MailPriority.High;
 
             //Add the Creddentials
@@ -128,7 +128,7 @@ namespace ProtocolVN.Framework.Win
         {
             DOServer mailInfo = DAServer.Instance.LoadAll(1);
             return sendEmail(mailInfo.SMTP, HelpNumber.ParseInt32(mailInfo.SMTP_PORT), 
-                mailInfo.EMAIL_USERNAME, mailInfo.PASS, displayFrom, tos, subject, body, false);
+                mailInfo.EMAIL, mailInfo.PASS, displayFrom, tos, subject, body, false);
         }
 
         #region Liên quan đến 1 Email Default hỗ trợ việc gửi Email ra bên ngoài. Email này chỉ có ý nghĩa nếu mình không cấu hình Email để gửi.
@@ -479,6 +479,66 @@ namespace ProtocolVN.Framework.Win
                 PLException.AddException(ex);
                 return false;
             }
+        }
+
+
+        public static void Send(string host, Int32 port, string from, string pass, string displayFrom, Dictionary<string, string> tos, Dictionary<string, string> ccs, Dictionary<string, string> bccs, string subject, string body, string fileName, bool SSL)
+        {
+            using (MailMessage msg = new MailMessage())
+            {
+                msg.From = new MailAddress(from, displayFrom, System.Text.Encoding.UTF8);
+                if (tos != null)
+                {
+                    foreach (KeyValuePair<string, string> item in tos)
+                    {
+                        msg.To.Add(new MailAddress(item.Key, item.Value));
+                    }
+
+                }
+                if (ccs != null)
+                {
+                    foreach (KeyValuePair<string, string> item in ccs)
+                    {
+                        msg.CC.Add(new MailAddress(item.Key, item.Value));
+                    }
+                }
+                if (bccs != null)
+                {
+                    foreach (KeyValuePair<string, string> item in bccs)
+                    {
+                        msg.Bcc.Add(new MailAddress(item.Key, item.Value));
+
+                    }
+                }
+                msg.Subject = subject;
+                msg.Body = body;
+                msg.Priority = MailPriority.High;
+                if (fileName != "" && File.Exists(fileName))
+                {
+                    Attachment att = new Attachment(fileName);
+                    msg.Attachments.Add(att);
+                }
+                //su dung tieng viet cho subject va message
+                msg.SubjectEncoding = Encoding.UTF8;
+                msg.BodyEncoding = Encoding.UTF8;
+                msg.IsBodyHtml = true;                //giao thuc gui mail
+                SmtpClient client = new SmtpClient();
+                client.Credentials = new NetworkCredential(from, pass);                // thay bằng username và password của bạn  
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Host = host;                // "smtp.gmail.com";
+                client.Port = port;                //bắt buộc phải là cổng 587  nếu dùng gmail
+                client.EnableSsl = SSL;     //server của gmail yêu cầu kết nối SSL (Secure Socket Layer) để bảo vệ thông tin đăng nhập  
+                //Gửi bình thường
+                client.Send(msg);
+            }
+
+            //// Gửi không đồng bộ
+            //client.SendCompleted += delegate(object sender, AsyncCompletedEventArgs e)
+            //{
+            //    //Thông báo gửi thành công
+            //};
+            //object userState = msg;
+            //client.SendAsync(msg, userState);
         }
     }
 }
