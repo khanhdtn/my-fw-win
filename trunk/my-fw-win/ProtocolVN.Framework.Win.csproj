@@ -370,6 +370,7 @@
     <Compile Include="frmT\frmTBieuDo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmT\Implements\frmPhieuQuanLyXX\IPhieuFix.cs" />
     <Compile Include="frmT\Implements\frmTPhieuThongKe\HelpPivotGrid.cs" />
     <Compile Include="frmT\Implements\frmTPhieuThongKe\HelpPivotGridField.cs" />
     <Compile Include="frmT\Implements\frmTPhieuThongKe\IPivotOLAP.cs" />
