@@ -149,7 +149,7 @@ namespace ProtocolVN.Framework.Win
         }
 
         public static RepositoryItemTimeEdit GetCotPLTimeEdit(String Format, HourFormat HFormat)
-        {
+        {            
             RepositoryItemTimeEdit timeEdit = new RepositoryItemTimeEdit();
             timeEdit.Mask.EditMask = Format;
             timeEdit.HourFormat = HFormat;
