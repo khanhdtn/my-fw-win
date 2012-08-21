@@ -675,18 +675,18 @@ namespace ProtocolVN.Framework.Win
                     if (ext.Equals("xls"))
                     {
                         if (link != null)
-                            link.PrintingSystem.ExportToXls(f.FileName);
+                            link.PrintingSystem.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
                         else
-                            gridView.ExportToXls(f.FileName);
+                            gridView.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
                         
                         succ = true;
                     }
                     else if (ext.Equals("xlsx"))
                     {
                         if (link != null)
-                            link.PrintingSystem.ExportToXlsx(f.FileName);
+                            link.PrintingSystem.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
                         else
-                            gridView.ExportToXlsx(f.FileName);
+                            gridView.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
                         succ = true;
                     }
                     else if (ext.Equals("pdf"))
@@ -728,7 +728,46 @@ namespace ProtocolVN.Framework.Win
                     FrameworkParams.wait.Finish();
                 if (succ == true)
                 {
-                    if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                    if (ext.Equals("xls") || ext.Equals("xlsx"))
+                    {
+                        try
+                        {
+                            System.Globalization.CultureInfo oldCi = System.Threading.Thread.CurrentThread.CurrentCulture;
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                            Microsoft.Office.Interop.Excel.ApplicationClass excelApp = new Microsoft.Office.Interop.Excel.ApplicationClass();
+                            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(filePath,
+                                                      0, false, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+                                                      true, false, 0, true, false, false);
+                            Microsoft.Office.Interop.Excel.Worksheet excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.ActiveSheet;
+                            excelSheet.Columns.AutoFit();
+                            excelWorkbook.Save();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = oldCi;
+                            if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                            {
+                                excelApp.Visible = true;
+                            }
+                            else
+                            {
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelSheet);
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorkbook);
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+                                excelSheet = null;
+                                excelWorkbook = null;
+                                excelApp = null;
+                                GC.Collect();
+                                GC.WaitForPendingFinalizers();
+                            }
+                        }
+                        catch
+                        {
+                            if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                            {
+                                if (!HelpFile.OpenFile(filePath))
+                                    HelpMsgBox.ShowNotificationMessage("Mở tập tin không thành công");
+                            }
+                        }
+                    }
+                    else if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
                     {
                         if (!HelpFile.OpenFile(filePath))
                             HelpMsgBox.ShowNotificationMessage("Mở tập tin không thành công");
