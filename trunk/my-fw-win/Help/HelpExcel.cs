@@ -221,7 +221,7 @@ namespace ProtocolVN.Framework.Win
         #endregion
 
         #region Import
-        private static decimal ToDecimalFromExcel(DataRow Row, string Field, int soThapPhan)
+        public static decimal ToDecimalFromExcel(DataRow Row, string Field, int soThapPhan)
         {
             decimal result = 0;
             if (Row[Field].GetType() != typeof(System.String))
@@ -302,7 +302,7 @@ namespace ProtocolVN.Framework.Win
         {
             dsErrorImport.Tables[0].Rows.Add(rowIndex, columnName, message);
         }
-        private static bool ValidateConnection(XlsFileConnection conn, string fileNamePath)
+        public static bool ValidateConnection(XlsFileConnection conn, string fileNamePath)
         {
             if (conn.Open() == null)
             {

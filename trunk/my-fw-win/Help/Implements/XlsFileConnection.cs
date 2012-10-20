@@ -13,8 +13,8 @@ namespace ProtocolVN.Framework.Win
 {
     public class XlsFileConnection
     {
-        //public static string constring = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=""Excel 8.0;HDR=Yes;IMEX=1"";Data Source={0}";
-        private string constring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=Yes;IMEX=1""";
+        public  string constring = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=""Excel 8.0;HDR=Yes;IMEX=1"";Data Source={0}";
+        //   private  string constring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=Yes;IMEX=1""";
         private const int MAX_EXCEL_ROWS_COUNT = 65536;
         private XlsFileErrorCode excelErr;
         private OleDbConnection Con;
@@ -102,6 +102,7 @@ namespace ProtocolVN.Framework.Win
         public void Close()
         {
             if (Con != null) Con.Dispose();
+         
         }
 
         /// <summary>
