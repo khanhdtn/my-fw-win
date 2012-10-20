@@ -225,16 +225,19 @@ namespace ProtocolVN.Framework.Win
         {
             throw new NotImplementedException();
         }
-
-
-
         #endregion
 
         public DMGrid GetDMGrid
         {
             get { return dmGridTemplate1; }
         }
-
+        public DataTable DataSource
+        {
+            get
+            {
+                return dmGridTemplate1.Grid.GridControl.DataSource as DataTable;
+            }
+        }
         #region IPermisionable Members
 
 

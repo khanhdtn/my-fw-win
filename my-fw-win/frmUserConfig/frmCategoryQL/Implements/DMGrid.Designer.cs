@@ -180,7 +180,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip btnBar;
+        public System.Windows.Forms.ToolStrip btnBar;
         public System.Windows.Forms.ToolStripButton btnAdd;
         public System.Windows.Forms.ToolStripButton btnDel;
         public System.Windows.Forms.ToolStripButton btnUpdate;

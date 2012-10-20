@@ -20,6 +20,9 @@ namespace ProtocolVN.Framework.Win
         private string IDField = null;
         private string DislayField = null;
         public DataRow RowSelected = null;
+        public bool _UseDeleteEvent = true;
+        public bool _UseAddEvent = true;
+        public bool _UseUpdateEvent = true;
         private DelegationLib.DefinePermission permission;
 
         #region Dùng như control chọn lựa
@@ -322,17 +325,20 @@ namespace ProtocolVN.Framework.Win
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _DMCore.AddAction(null);
+            if (_UseAddEvent)
+                _DMCore.AddAction(null);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            _DMCore.DeleteAction(null);
+            if (_UseDeleteEvent)
+                _DMCore.DeleteAction(null);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _DMCore.EditAction(null);
+            if (_UseUpdateEvent)
+                _DMCore.EditAction(null);
         }
 
         public void btnSelect_Click(object sender, EventArgs e)
