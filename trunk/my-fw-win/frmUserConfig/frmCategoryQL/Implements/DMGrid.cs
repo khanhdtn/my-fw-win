@@ -23,6 +23,8 @@ namespace ProtocolVN.Framework.Win
         public bool _UseDeleteEvent = true;
         public bool _UseAddEvent = true;
         public bool _UseUpdateEvent = true;
+        public ToolStripDropDownButton btnPrint;
+        public ToolStripDropDownButton btnExport;
         private DelegationLib.DefinePermission permission;
 
         #region Dùng như control chọn lựa
@@ -60,12 +62,19 @@ namespace ProtocolVN.Framework.Win
             this.Controls.Add(this.btnBar);
             this.IDField = IDField;
             this.DislayField = DislayField;
-
+            btnExport = HelpGrid.addXuatRaFileItem(this.btnBar, this.Grid);
+            btnPrint = HelpGrid.addInLuoiItem(this.btnBar, this.Grid);
             SetMode(type);
             EditMode(readOnlyField);
             Grid.KeyDown += new KeyEventHandler(Grid_KeyDown);
             Grid.DoubleClick += new EventHandler(Grid_DoubleClick);
             _DMCore.SetDMGridOwner(this);
+       
+            if (Grid is PLGridView)
+            {
+                ((PLGridView)Grid)._SetPermissionElement(btnPrint, btnExport);
+            }
+            
         }
         /// <summary>
         /// Unique:     N Field
@@ -99,12 +108,18 @@ namespace ProtocolVN.Framework.Win
             this.Controls.Add(this.btnBar);
             this.IDField = IDField;
             this.DislayField = DislayField;
-
+            btnExport = HelpGrid.addXuatRaFileItem(this.btnBar, this.Grid);
+            btnPrint = HelpGrid.addInLuoiItem(this.btnBar, this.Grid);
             SetMode(type);
             EditMode(readOnlyField);
             Grid.KeyDown += new KeyEventHandler(Grid_KeyDown);
             Grid.DoubleClick += new EventHandler(Grid_DoubleClick);
             _DMCore.SetDMGridOwner(this);
+          
+            if (Grid is PLGridView)
+            {
+                ((PLGridView)Grid)._SetPermissionElement(btnPrint, btnExport);
+            }
         }
 
         public void _refresh(DataTable DT)
@@ -243,6 +258,9 @@ namespace ProtocolVN.Framework.Win
                 btnSelect.Visible = false;
                 btnNoSelect.Visible = false;
 
+                btnPrint.Visible = false;
+                btnExport.Visible = false;
+
             }
             else if (type == GroupElementType.CHOICE_N_ADD)
             {
@@ -251,6 +269,9 @@ namespace ProtocolVN.Framework.Win
 
                 this.DongSep.Visible = false;
                 this.btnClose.Visible = false;
+
+                btnPrint.Visible = false;
+                btnExport.Visible = false;
             }
         }
 

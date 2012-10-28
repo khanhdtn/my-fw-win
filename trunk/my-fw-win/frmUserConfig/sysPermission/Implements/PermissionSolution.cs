@@ -262,6 +262,23 @@ namespace ProtocolVN.Framework.Win
                     }
                 }
                 #endregion
+                #region ToolStripButton nằm trên Bar
+                else if ((element as ToolStripDropDownButton) != null)
+                {
+                    ToolStripDropDownButton item = (ToolStripDropDownButton)element;
+
+                    if (TagPropertyMan.Get(item.Tag, "SECURITY") != null)
+                        tagValue = (PermissionItem)TagPropertyMan.Get(item.Tag, "SECURITY");
+                    bool? result = checkPermission(tagValue);
+                    if (result == null) return false;
+                    if (result == false)
+                    {
+                        if (tagValue.permissionHow == PermissionHow.HIDE) item.Visible = false;
+                        else if (tagValue.permissionHow == PermissionHow.DISABLE) item.Enabled = false;
+                        if (tagValue.failAction != null) tagValue.failAction();
+                    }
+                }
+                #endregion
                 #region BarItem nằm trên Bars, BarManager
                 else if ((element as BarItem) != null)
                 {
@@ -434,6 +451,11 @@ namespace ProtocolVN.Framework.Win
                 object obj = ((ToolStripButton)item).Tag;
                 TagPropertyMan.InsertOrUpdate(ref obj, "SECURITY", permission);
                 ((ToolStripButton)item).Tag = obj;
+            } else if ((item as ToolStripDropDownButton) != null)
+            {
+                object obj = ((ToolStripDropDownButton)item).Tag;
+                TagPropertyMan.InsertOrUpdate(ref obj, "SECURITY", permission);
+                ((ToolStripDropDown)item).Tag = obj;
             }
             else if ((item as BarItem) != null)
             {
@@ -512,6 +534,12 @@ namespace ProtocolVN.Framework.Win
                 object obj = ((ToolStripButton)item).Tag;
                 TagPropertyMan.InsertOrUpdate(ref obj, "SECURITY", permission);
                 ((ToolStripButton)item).Tag = obj;
+            } 
+            else if ((item as ToolStripDropDownButton) != null)
+            {
+                object obj = ((ToolStripDropDownButton)item).Tag;
+                TagPropertyMan.InsertOrUpdate(ref obj, "SECURITY", permission);
+                ((ToolStripDropDownButton)item).Tag = obj;
             }
             else if ((item as BarItem) != null)
             {

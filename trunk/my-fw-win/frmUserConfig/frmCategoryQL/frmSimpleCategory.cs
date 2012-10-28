@@ -189,5 +189,20 @@ namespace ProtocolVN.Framework.Win
         }
 
         #endregion
+
+        #region IFormCategory Members
+
+
+        public ToolStripDropDownButton GetPrintBtn()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ToolStripDropDownButton GetExportBtn()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }    
 }

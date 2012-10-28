@@ -38,7 +38,8 @@ namespace ProtocolVN.Framework.Win
         private bool isEdit = false;//Cho biết có đang ở chế độ edit không 
 
         public bool forceExitCtrl = false;//True: Bat buoc dong popUp bang moi gia.
-
+        public ToolStripDropDownButton btnPrint;
+        public ToolStripDropDownButton btnExport;
         #region Danh sách sự kiện
         public delegate void BeforeSave(DMTreeGroupElement sender);
         public event BeforeSave _BeforeSaveEvent;
@@ -124,6 +125,8 @@ namespace ProtocolVN.Framework.Win
             this.DisplayField = DisplayField;
             this.GroupIDField = GroupIDField;
             this.Rule = Rule;
+            btnExport = HelpGrid.addXuatRaFileItem(this.toolStrip_1, this.gridView_1);
+            btnPrint = HelpGrid.addInLuoiItem(this.toolStrip_1, this.gridView_1);
             this.UpdateActionItem(type);
             //Khởi tạo cây
             this.TreeList_1._BuildTree(GroupTableName, RootID, GroupIDField, GroupParentIDField, GroupVisibleFields, GroupCaptions, null, IsTreeVisibleBit);
@@ -141,6 +144,8 @@ namespace ProtocolVN.Framework.Win
             {
                 RefreshGridData(this.TreeList_1.FocusedNode);
             }
+        
+            gridView_1._SetPermissionElement(btnPrint, btnExport);
         }
 
 
@@ -166,6 +171,9 @@ namespace ProtocolVN.Framework.Win
             this.DisplayField = DisplayField;
             this.GroupIDField = GroupIDField;
             this.Rule = Rule;
+            btnExport = HelpGrid.addXuatRaFileItem(this.toolStrip_1, this.gridView_1);
+            btnPrint = HelpGrid.addInLuoiItem(this.toolStrip_1, this.gridView_1);
+
             this.UpdateActionItem(type);
             //Khởi tạo cây
             this.TreeList_1._BuildTree(GroupTableName, RootID, GroupIDField, GroupParentIDField, GroupVisibleFields, GroupCaptions, null, IsTreeVisibleBit);
@@ -187,8 +195,11 @@ namespace ProtocolVN.Framework.Win
                 //TreeListNode tmp = this.TreeList_1.FocusedNode;
                 //this.TreeList_1.SetFocusedNode(tmp.RootNode);
                 //this.TreeList_1.Select();
-                RefreshGridData(this.TreeList_1.FocusedNode);                
+                RefreshGridData(this.TreeList_1.FocusedNode);
             }
+      
+            gridView_1._SetPermissionElement(btnPrint, btnExport);
+
         }
 
         /// <summary>
@@ -345,6 +356,9 @@ namespace ProtocolVN.Framework.Win
                 this.btnSave.Visible = false;
                 this.btnNoSave.Visible = false;
 
+                btnExport.Visible = false;
+                btnPrint.Visible = false;
+
                 TreeList_1.AllowDrop = false;
 
                 this.GridControl_1.MouseMove -= new System.Windows.Forms.MouseEventHandler(this.GridControl_1_MouseMove);
@@ -357,6 +371,9 @@ namespace ProtocolVN.Framework.Win
 
                 this.DongSep.Visible = false;
                 this.Close.Visible = false;
+
+                btnExport.Visible = false;
+                btnPrint.Visible = false;
 
                 this.GridControl_1.MouseMove -= new System.Windows.Forms.MouseEventHandler(this.GridControl_1_MouseMove);
                 this.GridControl_1.MouseDown -= new System.Windows.Forms.MouseEventHandler(this.GridControl_1_MouseDown);

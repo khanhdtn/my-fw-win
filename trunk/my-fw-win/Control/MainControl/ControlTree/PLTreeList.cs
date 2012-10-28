@@ -125,6 +125,11 @@ namespace DevExpress.XtraTreeList
                     if (((DevExpress.XtraEditors.SimpleButton)_ExportElement).Visible == false)
                         isExport = false;
                 }
+                else if (_ExportElement is System.Windows.Forms.ToolStripDropDownButton)
+                {
+                    if (((System.Windows.Forms.ToolStripDropDownButton)_ExportElement).Visible == false)
+                        isExport = false;
+                }
             }
             if (isExport)
             {   //SubMenu Export Data
@@ -174,6 +179,11 @@ namespace DevExpress.XtraTreeList
                 else if (_PrintElement is DevExpress.XtraEditors.SimpleButton)
                 {
                     if (((DevExpress.XtraEditors.SimpleButton)_PrintElement).Visible == false)
+                        isPrint = false;
+                }
+                else if (_PrintElement is System.Windows.Forms.ToolStripDropDownButton)
+                {
+                    if (((System.Windows.Forms.ToolStripDropDownButton)_PrintElement).Visible == false)
                         isPrint = false;
                 }
             }

@@ -26,7 +26,8 @@ namespace ProtocolVN.Framework.Win
         private string[] UniqueFields;      //Những Field không cho trùng nhau ( dùng kết hợp chứ không phải từng Field)
         private string[] Subjects;          //Title để thông báo lỗi                                    
         private bool IsVisibleBit;          //Dùng VISIBLE_BIT
-
+        public ToolStripDropDownButton btnPrint;
+        public ToolStripDropDownButton btnExport;
         private enum _FOCUS
         {
             NONE,
@@ -650,6 +651,9 @@ namespace ProtocolVN.Framework.Win
         //Cập nhật các nút tương ứng với tình huống sử dụng
         private void UpdateItemBtn(GroupElementType type)
         {
+            btnPrint = HelpTreeList.addXuatRaFileItem(this.toolStrip_1, this.TreeList_1);                //In
+            btnExport = HelpTreeList.addInLuoiItem(this.toolStrip_1, this.TreeList_1);
+            TreeList_1._SetPermissionElement(btnPrint, btnExport);
             if (type == GroupElementType.ONLY_INPUT)
             {
                 btnSelect.Visible = false;
@@ -661,9 +665,7 @@ namespace ProtocolVN.Framework.Win
                 TreeList_1.AllowDrop = true;
 
                 //Xuất ra file
-                HelpTreeList.addXuatRaFileItem(this.toolStrip_1, this.TreeList_1);
-                //In
-                HelpTreeList.addInLuoiItem(this.toolStrip_1, this.TreeList_1);
+              
             }
             else if (type == GroupElementType.ONLY_CHOICE)
             {
@@ -682,7 +684,9 @@ namespace ProtocolVN.Framework.Win
                 ChonSep.Visible = false;
                 btnSelect.Visible = true;
                 btnNoSelect.Visible = true;
-                
+
+                btnPrint.Visible = false;
+                btnExport.Visible = false;
                 this.TreeList_1.FocusedNodeChanged -= new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.TreeList_1_FocusedNodeChanged);
                 this.TreeList_1.ValidateNode -= new DevExpress.XtraTreeList.ValidateNodeEventHandler(this.TreeList_1_ValidateNode_1);
                 this.TreeList_1.InvalidNodeException -= InvalidNodeException_1;
@@ -696,7 +700,10 @@ namespace ProtocolVN.Framework.Win
 
                 DongSep.Visible = false;
                 btnClose.Visible = false;
-                
+
+                btnPrint.Visible = false;
+                btnExport.Visible = false;
+
                 this.TreeList_1.InvalidNodeException += InvalidNodeException_1;
                 TreeList_1.AllowDrop = false;
             }
