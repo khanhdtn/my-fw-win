@@ -15,7 +15,7 @@ namespace ProtocolVN.Framework.Win
     {
         public frmCenterCategory() : base() { }
 
-        public frmCenterCategory(string ConfigXMLStr) : base(ConfigXMLStr){ }
+        public frmCenterCategory(string ConfigXMLStr) : base(ConfigXMLStr) { }
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace ProtocolVN.Framework.Win
             this.initData(ConfigXMLStr);
         }
 
-        
+
         #region Nạp dữ liệu từ file xml
         private void initData(string ConfigXMLStr)
         {
@@ -118,9 +118,32 @@ namespace ProtocolVN.Framework.Win
                             navItem.Caption = tmpSub.Current.Value.Trim();
                         }
                     }
+                    try
+                    {
+                        string param = "";
+                        string formName = navItem.Name;
+
+                        if (formName.Contains("?") && formName.Contains("="))
+                        {
+                            param = formName.Substring(formName.IndexOf('=') + 1).Trim();
+                            formName = formName.Substring(0, formName.IndexOf('?')).Trim();
+                        }
+                        previousItem = currentItem;
+
+                        XtraUserControl control = (XtraUserControl)GenerateClass.initMethod(formName, param, false);
+
+                        if (control != null)
+                        {
+                            if (HelpPermission.CheckCtrl(control) == false)
+                            {
+                                navItem.Enabled = false;
+                            }
+                        }
+                    }
+                    catch { }
                     navItem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem_LinkClicked);
                     DevExpress.XtraNavBar.NavBarItemLink navItemLink = new DevExpress.XtraNavBar.NavBarItemLink(navItem);
-                    group.ItemLinks.Add(navItemLink);                    
+                    group.ItemLinks.Add(navItemLink);
                     this.navBarControl1.Items.Add(navItem);
                 }
                 //Gắn hình vào group
@@ -128,19 +151,21 @@ namespace ProtocolVN.Framework.Win
                 string image = groupNode.GetAttribute("picindex", groupNode.NamespaceURI);
                 if (image == String.Empty)
                 {
-                    if(group.ItemLinks.Count > 0)
+                    if (group.ItemLinks.Count > 0)
                         group.SmallImage = group.ItemLinks[0].Item.SmallImage;
                 }
                 else
                 {
                     group.SmallImage = HelpImage.getImage1616(image);
-                }                 
+                }
             }
 
-            if(navBarControl1.ActiveGroup.ItemLinks.Count > 0){
+            if (navBarControl1.ActiveGroup.ItemLinks.Count > 0)
+            {
                 lblCat.Text = navBarControl1.ActiveGroup.ItemLinks[0].Item.Caption;
             }
-            else{
+            else
+            {
                 lblCat.Text = "Chưa xác định danh mục";
             }
 
@@ -151,7 +176,7 @@ namespace ProtocolVN.Framework.Win
             else if (viewID == 1)// View Old
             {
                 //NOOP
-            }            
+            }
         }
         private void toView2()
         {
@@ -173,11 +198,11 @@ namespace ProtocolVN.Framework.Win
 
             //Add lại một navBarControl
             this.Controls.Add(navBaControl);
-            
+
             //this.ResumeLayout(false);
         }
 
-        
+
         #endregion
 
         #region Sự kiện trên form
@@ -215,15 +240,16 @@ namespace ProtocolVN.Framework.Win
             }
             else
             {
-                if( navBarControl1.ActiveGroup.ItemLinks!=null &&
-                    navBarControl1.ActiveGroup.ItemLinks.Count >=1)
+                if (navBarControl1.ActiveGroup.ItemLinks != null &&
+                    navBarControl1.ActiveGroup.ItemLinks.Count >= 1)
                     FocusParam(navBarControl1.ActiveGroup.ItemLinks[0].Item.Name);
             }
         }
 
         /// <summary>Đóng form
         /// </summary>
-        private void closeButton_Click(object sender, EventArgs e){
+        private void closeButton_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
@@ -322,17 +348,18 @@ namespace ProtocolVN.Framework.Win
             this.control.Dock = DockStyle.Fill;
             this.control.Name = "control";
             //this.control.Visible = true;
-            this.panel1.Controls.Add(control);            
+            this.panel1.Controls.Add(control);
             #region Xử lý loại danh mục
             string type = currentItem.Tag.ToString();
             if (type == "action")
             {
-                IActionCategory catAction = (IActionCategory)this.control;
-                if (catAction.GetGridView() != null)
-                {
-                    HelpGrid.addXuatRaFileItem(catAction.GetMenuAction(), cat.GetGridView());
-                    HelpGrid.addInLuoiItem(catAction.GetMenuAction(), cat.GetGridView());
-                }
+                //IActionCategory catAction = (IActionCategory)this.control;
+                //if (catAction.GetGridView() != null)
+                //{
+                //  //  xuatRaFile = HelpGrid.addXuatRaFileItem(catAction.GetMenuAction(), cat.GetGridView());
+                //    //inLuoiItem = HelpGrid.addInLuoiItem(catAction.GetMenuAction(), cat.GetGridView());
+                  
+                //}
                 //Dùng hoàn toàn User Control của mình
             }
             else if (type == "plugin")
@@ -341,13 +368,13 @@ namespace ProtocolVN.Framework.Win
                 //this.closeButton.Visible = false;
                 this.control.Controls.Add(this.toolStrip1);
                 //Xuất ra File
-                if(this.xuatRaFile!=null)
-                    this.toolStrip1.Items.Remove(this.xuatRaFile);                
+                if (this.xuatRaFile != null)
+                    this.toolStrip1.Items.Remove(this.xuatRaFile);
                 this.xuatRaFile = HelpGrid.addXuatRaFileItem(this.toolStrip1, cat.GetGridView());
-                
+
                 //In lưới
-                if(this.inLuoiItem != null)
-                    this.toolStrip1.Items.Remove(this.inLuoiItem);                
+                if (this.inLuoiItem != null)
+                    this.toolStrip1.Items.Remove(this.inLuoiItem);
                 this.inLuoiItem = HelpGrid.addInLuoiItem(this.toolStrip1, cat.GetGridView());
             }
             #endregion
@@ -365,7 +392,7 @@ namespace ProtocolVN.Framework.Win
                 {
                     items = HelpGrid.addNhapTuFileItem(this.toolStrip1, cat.GetGridView());
                 }
-                    
+
                 import.init(this, this.control, items);
             }
             //Mở rộng nhiều tính năng tiếp theo...
@@ -380,9 +407,9 @@ namespace ProtocolVN.Framework.Win
             if (FrameworkParams.wait == null) FrameworkParams.wait = new WaitingMsg();
             navBarItem_LinkClicked();
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
-            
+
             //WaitingMsg.LongProcess(navBarItem_LinkClicked);
-        }        
+        }
         #endregion
 
         #region IParamForm Members
@@ -466,6 +493,15 @@ namespace ProtocolVN.Framework.Win
         public ToolStripButton GetNoSaveBtn()
         {
             return this.btnNoSave;
+        }
+        public ToolStripDropDownButton GetPrintBtn()
+        {
+            return this.inLuoiItem;
+        }
+
+        public ToolStripDropDownButton GetExportBtn()
+        {
+            return this.xuatRaFile;
         }
 
         #endregion
@@ -577,5 +613,6 @@ namespace ProtocolVN.Framework.Win
         //    return temp.ToArray();
         //}
         #endregion
-    }    
+
+    }
 }
