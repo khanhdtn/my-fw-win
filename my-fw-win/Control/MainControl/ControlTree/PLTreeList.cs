@@ -8,12 +8,19 @@ using ProtocolVN.Framework.Win;
 namespace DevExpress.XtraTreeList
 {
     public class PLTreeList : TreeList
-    {
+    {  
+        private object _PrintElement;
+        private object _ExportElement;
         public PLTreeList() : base()
         {
             this.ToPLTreeList();
         }
-
+      
+        public void _SetPermissionElement(object print, object export)
+        {
+            this._PrintElement = print;
+            this._ExportElement = export;
+        }
         private void ToPLTreeList()
         {
             //Danh sách các thuộc tính đã đặt sẵn
@@ -104,45 +111,79 @@ namespace DevExpress.XtraTreeList
             #endregion
 
             #region 6. Xuất ra file
-            //SubMenu Export Data
-            DevExpress.Utils.Menu.DXSubMenuItem itemExport = new DevExpress.Utils.Menu.DXSubMenuItem("Xuất ra file");
-            itemExport.BeginGroup = true;
-            Menu.Items.Add(itemExport);
+          bool isExport = true;
 
-            //Menu Export Excel
-            DevExpress.Utils.Menu.DXMenuItem itemExportExcel = new DevExpress.Utils.Menu.DXMenuItem("Excel 97 - 2003");
-            itemExport.Items.Add(itemExportExcel);
-            itemExportExcel.Tag = "xls";
-            itemExportExcel.Click += new EventHandler(itemExport_Click);
+            if (_ExportElement != null)
+            {
+                if (_ExportElement is DevExpress.XtraBars.BarItem)
+                {
+                    if (((DevExpress.XtraBars.BarItem)_ExportElement).Visibility == DevExpress.XtraBars.BarItemVisibility.Never)
+                        isExport = false;
+                }
+                else if (_ExportElement is DevExpress.XtraEditors.SimpleButton)
+                {
+                    if (((DevExpress.XtraEditors.SimpleButton)_ExportElement).Visible == false)
+                        isExport = false;
+                }
+            }
+            if (isExport)
+            {   //SubMenu Export Data
+                DevExpress.Utils.Menu.DXSubMenuItem itemExport = new DevExpress.Utils.Menu.DXSubMenuItem("Xuất ra file");
+                itemExport.BeginGroup = true;
+                Menu.Items.Add(itemExport);
 
-            DevExpress.Utils.Menu.DXMenuItem itemExportExcel2007 = new DevExpress.Utils.Menu.DXMenuItem("Excel 2007");
-            itemExport.Items.Add(itemExportExcel2007);
-            itemExportExcel2007.Tag = "xlsx";
-            itemExportExcel2007.Click += new EventHandler(itemExport_Click);
+                //Menu Export Excel
+                DevExpress.Utils.Menu.DXMenuItem itemExportExcel = new DevExpress.Utils.Menu.DXMenuItem("Excel 97 - 2003");
+                itemExport.Items.Add(itemExportExcel);
+                itemExportExcel.Tag = "xls";
+                itemExportExcel.Click += new EventHandler(itemExport_Click);
 
-            DevExpress.Utils.Menu.DXMenuItem itemPDF = new DevExpress.Utils.Menu.DXMenuItem("PDF");
-            itemExport.Items.Add(itemPDF);
-            itemPDF.Tag = "pdf";
-            itemPDF.Click += new EventHandler(itemExport_Click);
+                DevExpress.Utils.Menu.DXMenuItem itemExportExcel2007 = new DevExpress.Utils.Menu.DXMenuItem("Excel 2007");
+                itemExport.Items.Add(itemExportExcel2007);
+                itemExportExcel2007.Tag = "xlsx";
+                itemExportExcel2007.Click += new EventHandler(itemExport_Click);
 
-            //Menu Export HTML
-            DevExpress.Utils.Menu.DXMenuItem itemExportHTML = new DevExpress.Utils.Menu.DXMenuItem("HTML");
-            itemExport.Items.Add(itemExportHTML);
-            itemExportHTML.Tag = "html";
-            itemExportHTML.Click += new EventHandler(itemExport_Click);
+                DevExpress.Utils.Menu.DXMenuItem itemPDF = new DevExpress.Utils.Menu.DXMenuItem("PDF");
+                itemExport.Items.Add(itemPDF);
+                itemPDF.Tag = "pdf";
+                itemPDF.Click += new EventHandler(itemExport_Click);
 
-            //Menu Export Text
-            DevExpress.Utils.Menu.DXMenuItem itemExportText = new DevExpress.Utils.Menu.DXMenuItem("RTF");
-            itemExport.Items.Add(itemExportText);
-            itemExportText.Tag = "rtf";
-            itemExportText.Click += new EventHandler(itemExport_Click);
+                //Menu Export HTML
+                DevExpress.Utils.Menu.DXMenuItem itemExportHTML = new DevExpress.Utils.Menu.DXMenuItem("HTML");
+                itemExport.Items.Add(itemExportHTML);
+                itemExportHTML.Tag = "html";
+                itemExportHTML.Click += new EventHandler(itemExport_Click);
+
+                //Menu Export Text
+                DevExpress.Utils.Menu.DXMenuItem itemExportText = new DevExpress.Utils.Menu.DXMenuItem("RTF");
+                itemExport.Items.Add(itemExportText);
+                itemExportText.Tag = "rtf";
+                itemExportText.Click += new EventHandler(itemExport_Click);
+            }
             #endregion
 
             #region 7. In dữ liệu
-            DevExpress.Utils.Menu.DXMenuItem itemPrintData = new DevExpress.Utils.Menu.DXMenuItem("Xem trước khi in");
-            itemPrintData.BeginGroup = true;
-            Menu.Items.Add(itemPrintData);
-            itemPrintData.Click += new EventHandler(itemPrintData_Click);
+              bool isPrint = true;
+            if (_PrintElement != null)
+            {
+                if (_PrintElement is DevExpress.XtraBars.BarItem)
+                {
+                    if (((DevExpress.XtraBars.BarItem)_PrintElement).Visibility == DevExpress.XtraBars.BarItemVisibility.Never)
+                        isPrint = false;
+                }
+                else if (_PrintElement is DevExpress.XtraEditors.SimpleButton)
+                {
+                    if (((DevExpress.XtraEditors.SimpleButton)_PrintElement).Visible == false)
+                        isPrint = false;
+                }
+            }
+            if (isPrint)
+            {
+                DevExpress.Utils.Menu.DXMenuItem itemPrintData = new DevExpress.Utils.Menu.DXMenuItem("Xem trước khi in");
+                itemPrintData.BeginGroup = true;
+                Menu.Items.Add(itemPrintData);
+                itemPrintData.Click += new EventHandler(itemPrintData_Click);
+            }
             #endregion
 
             #region 8. Hình dạng cây - Chưa hỗ trợ

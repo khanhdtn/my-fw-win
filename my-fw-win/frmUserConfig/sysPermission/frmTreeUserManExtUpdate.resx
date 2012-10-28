@@ -121,8 +121,8 @@
   <data name="gridControlReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvgAA
-        Dr4B6kKxwAAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvAAA
+        DrwBlbxySQAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
         VqsogqMh1fEdTSY1ToqYJhpfIKgoLEbZheWNLA957YICayQIcvqdu+y6u2CA+kPsTP+Zb/67//577vnu
         Ofecc8++9NL/r85ZASL6dSt4pXNmk0hqs8Ldcbd4XFpC2oQE0iYmUs3lS1SXl4fHtAr4uUTTSScGSvUD
         rIGI2vg4Kt2xnbLfnUZpdjYkt+pDisEDKGvK21Sxfx+TcGSC0s3+nJKgTB+gRpt4k4oC11LGxPGU5mBH
@@ -167,8 +167,8 @@
   <data name="gridControlThanhPhanGroupUser.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvgAA
-        Dr4B6kKxwAAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvAAA
+        DrwBlbxySQAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
         VqsogqMh1fEdTSY1ToqYJhpfIKgoLEbZheWNLA957YICayQIcvqdu+y6u2CA+kPsTP+Zb/67//577vnu
         Ofecc8++9NL/r85ZASL6dSt4pXNmk0hqs8Ldcbd4XFpC2oQE0iYmUs3lS1SXl4fHtAr4uUTTSScGSvUD
         rIGI2vg4Kt2xnbLfnUZpdjYkt+pDisEDKGvK21Sxfx+TcGSC0s3+nJKgTB+gRpt4k4oC11LGxPGU5mBH
@@ -213,11 +213,11 @@
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="gridControlUser.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gridControlGroup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvgAA
-        Dr4B6kKxwAAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvAAA
+        DrwBlbxySQAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
         VqsogqMh1fEdTSY1ToqYJhpfIKgoLEbZheWNLA957YICayQIcvqdu+y6u2CA+kPsTP+Zb/67//577vnu
         Ofecc8++9NL/r85ZASL6dSt4pXNmk0hqs8Ldcbd4XFpC2oQE0iYmUs3lS1SXl4fHtAr4uUTTSScGSvUD
         rIGI2vg4Kt2xnbLfnUZpdjYkt+pDisEDKGvK21Sxfx+TcGSC0s3+nJKgTB+gRpt4k4oC11LGxPGU5mBH
@@ -259,11 +259,11 @@
         HN3APT//LivPmfhnUs8nuTxWEhC9GTO8LPlkEgj8D39keJaYWZOhAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="gridControlGroup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gridControlUser.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvgAA
-        Dr4B6kKxwAAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOvAAA
+        DrwBlbxySQAACThJREFUaEPtWQtQlNcVTpuk7bSdNq3xBSr4GkHAF+AjGk1UjFFTx1qpb0FEBAKoCKIx
         VqsogqMh1fEdTSY1ToqYJhpfIKgoLEbZheWNLA957YICayQIcvqdu+y6u2CA+kPsTP+Zb/67//577vnu
         Ofecc8++9NL/r85ZASL6dSt4pXNmk0hqs8Ldcbd4XFpC2oQE0iYmUs3lS1SXl4fHtAr4uUTTSScGSvUD
         rIGI2vg4Kt2xnbLfnUZpdjYkt+pDisEDKGvK21Sxfx+TcGSC0s3+nJKgTB+gRpt4k4oC11LGxPGU5mBH
