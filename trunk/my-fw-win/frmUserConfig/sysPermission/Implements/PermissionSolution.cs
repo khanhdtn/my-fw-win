@@ -23,7 +23,9 @@ namespace ProtocolVN.Framework.Win
         ADD_EDIT_DELETE, //Thêm | Sửa | Xóa đều có quyền
         EDIT_DELETE, //Sửa | Xóa đều có quyền
         VIEW_ADD_DELETE_EDIT, //Xem | Them | Xoa | Sua
-        VIEW_HIDE//Xem không xem ẩn
+        VIEW_HIDE,//Xem không xem ẩn,
+        PRINT,//In
+        EXPORT//Xuất file
     }
     /// <summary>Cách xử lý khi vi phạm phân quyền
     /// </summary>
@@ -120,6 +122,8 @@ namespace ProtocolVN.Framework.Win
             this.isInsert = false;
             this.isDelete = false;
             this.isUpdate = false;
+            this.isPrint = false;
+            this.isExport = false;
 
             if (FrameworkParams.isSupportDeveloper == true)
             {
@@ -141,21 +145,21 @@ namespace ProtocolVN.Framework.Win
         {
             if (featureName.StartsWith("F"))
             {
-                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE) 
+                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE, ISPRINT, ISEXPORT) 
                 VALUES (" + "gen_id(G_FW_ID, 1)" + @", '" + this.featureName + @"', '" + this.description + @"', 'Y', '"
-                          + "Y" + "','" + "N" + "','" + "N" + "','" + "N" + "');";
+                          + "Y" + "','" + "N" + "','" + "N" + "','" + "N" + "','" + "N" + "','" + "N" + "');";
             }
             else if (featureName.StartsWith("O"))
             {
-                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE) 
+                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE, ISPRINT, ISEXPORT) 
                 VALUES (" + "gen_id(G_FW_ID, 1)" + @", '" + this.featureName + @"', '" + this.description + @"', 'Y', '"
-                          + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "');";    
+                          + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "');";    
             }
             else if (featureName.IndexOf(".DM") > 0)//Danh muc
             {
-                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE) 
+                return @"INSERT INTO FEATURE_CAT (ID, NAME, DESCRIPTION, VISIBLE_BIT, ISREAD, ISINSERT, ISUPDATE, ISDELETE, ISPRINT, ISEXPORT)
                 VALUES (" + "gen_id(G_FW_ID, 1)" + @", '" + this.featureName + @"', '" + this.description + @"', 'Y', '"
-                          + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "');";    
+                          + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "','" + "Y" + "');";    
             }
             return featureName + " đặt không đúng chuẩn";
         }
@@ -188,6 +192,12 @@ namespace ProtocolVN.Framework.Win
                     break;
                 case PermissionType.DELETE:
                     ret = featureName + ";DELETE";
+                    break;
+                case PermissionType.PRINT:
+                    ret = featureName + ";PRINT";
+                    break;
+                case PermissionType.EXPORT:
+                    ret = featureName + ";EXPORT";
                     break;
             }
             return ret;
@@ -652,7 +662,13 @@ namespace ProtocolVN.Framework.Win
                                    result = null;
                                 else 
                                    result = true;
-                               break;                            
+                               break;       
+                            case PermissionType.PRINT:
+                               result = feature.isPrint;
+                               break;
+                            case PermissionType.EXPORT:
+                               result = feature.isExport;
+                               break;
                         }
 
                         //Tùy vào kết quả sẽ xử lý tiếp.
@@ -932,12 +948,10 @@ namespace ProtocolVN.Framework.Win
                         new PermissionItem(mainFeature, PermissionType.EDIT));
                     ApplyPermissionAction.ApplyPermissionObject(items, basic.btnUpdate,
                         new PermissionItem(mainFeature, PermissionType.EDIT));
-
                     ApplyPermissionAction.ApplyPermissionObject(items, basic.btnSave,
                         new PermissionItem(mainFeature, PermissionType.EDIT));
                     ApplyPermissionAction.ApplyPermissionObject(items, basic.btnNoSave,
                         new PermissionItem(mainFeature, PermissionType.EDIT));
-
                     return items;
                 };
             }
@@ -1404,6 +1418,14 @@ namespace ProtocolVN.Framework.Win
                 else if (per.Equals("EDIT"))
                 {
                     PerType = PermissionType.EDIT;
+                }
+                else if (per.Equals("PRINT"))
+                {
+                    PerType = PermissionType.PRINT;
+                }
+                else if (per.Equals("EXPORT"))
+                {
+                    PerType = PermissionType.EXPORT;
                 }
 
                 PermissionItem item = new PermissionItem(featureName, PerType);

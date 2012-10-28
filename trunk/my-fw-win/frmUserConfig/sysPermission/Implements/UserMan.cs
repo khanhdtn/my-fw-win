@@ -30,7 +30,8 @@ namespace ProtocolVN.Framework.Win
             feature.isInsert = (row["isinsert_bit"].ToString().Equals("Y") ? true : false);
             feature.isUpdate = (row["isupdate_bit"].ToString().Equals("Y") ? true : false);
             feature.isDelete = (row["isdelete_bit"].ToString().Equals("Y") ? true : false);
-
+            feature.isPrint = (row["isprint_bit"].ToString().Equals("Y") ? true : false);
+            feature.isExport = (row["isexport_bit"].ToString().Equals("Y") ? true : false);
             return feature;
         }
 
