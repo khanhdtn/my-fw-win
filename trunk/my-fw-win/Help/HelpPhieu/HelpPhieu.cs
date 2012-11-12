@@ -67,12 +67,13 @@ namespace ProtocolVN.Framework.Win
         }
         /// <summary>Khởi tạo Grid trên phiếu 1 lưới
         /// </summary>
-        public static GridColumn InitGrid(GridControl gridControl, BandedGridView gridView, bool? IsAdd)
+        public static BandedGridColumn InitGrid(GridControl gridControl, BandedGridView gridView, bool? IsAdd)
         {
             BandedGridColumn CotDong = HelpGridColumn.CotPLDong(gridControl, gridView);
             if (IsAdd == null)
             {
                 CotDong.Visible = false;
+                CotDong.OwnerBand.Visible = false;
                 //((PLGridView)gridView)._SetDesignLayout();
                 ((PLBandedGridView)gridView)._SetUserLayout("VIEW");
             }
