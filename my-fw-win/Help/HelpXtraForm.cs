@@ -153,15 +153,17 @@ namespace ProtocolVN.Framework.Win
             {
                 CloseForm(frm, IsAdd, eabc);
             };
-
-            btn.Click += delegate(Object abc, System.EventArgs sea)
+            if (btn != null)
             {
-                if (btn.Disposing == false)
+                btn.Click += delegate(Object abc, System.EventArgs sea)
                 {
-                    frm.Close();
-                }
+                    if (btn.Disposing == false)
+                    {
+                        frm.Close();
+                    }
 
-            };
+                };
+            }
         }
         /// <summary>Đóng màn hình có confirm. Phải gọi SetCloseForm trước.
         /// Phát sinh: Dùng trong tất cả các phiếu.

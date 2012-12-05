@@ -674,19 +674,39 @@ namespace ProtocolVN.Framework.Win
 
                     if (ext.Equals("xls"))
                     {
-                        if (link != null)
-                            link.PrintingSystem.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
+                        if (gridView is PLGridView)
+                        {
+                            if (link != null)
+                                link.PrintingSystem.ExportToXls(f.FileName, new XlsExportOptions(((PLGridView)gridView)._TextExportMode));
+                            else
+                                gridView.ExportToXls(f.FileName, new XlsExportOptions(((PLGridView)gridView)._TextExportMode));
+                        }
                         else
-                            gridView.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
-                        
+                        {
+                            if (link != null)
+                                link.PrintingSystem.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
+                            else
+                                gridView.ExportToXls(f.FileName, new XlsExportOptions(TextExportMode.Text));
+                        }
                         succ = true;
                     }
                     else if (ext.Equals("xlsx"))
                     {
-                        if (link != null)
-                            link.PrintingSystem.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
+                        if (gridView is PLGridView)
+                        {
+
+                            if (link != null)
+                                link.PrintingSystem.ExportToXlsx(f.FileName, new XlsxExportOptions(((PLGridView)gridView)._TextExportMode));
+                            else
+                                gridView.ExportToXlsx(f.FileName, new XlsxExportOptions(((PLGridView)gridView)._TextExportMode));
+                        }
                         else
-                            gridView.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
+                        {
+                            if (link != null)
+                                link.PrintingSystem.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
+                            else
+                                gridView.ExportToXlsx(f.FileName, new XlsxExportOptions(TextExportMode.Text));
+                        }
                         succ = true;
                     }
                     else if (ext.Equals("pdf"))
@@ -778,7 +798,7 @@ namespace ProtocolVN.Framework.Win
             }
             return true;
         }
-
+    
         #region Gắn Item chuẩn vào barMan
         /// <summary>
         /// Gắn Item xuất ra File vào barMan ( giống như các màn hình quản lý)
