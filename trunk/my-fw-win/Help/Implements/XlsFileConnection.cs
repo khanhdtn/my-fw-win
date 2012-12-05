@@ -13,16 +13,18 @@ namespace ProtocolVN.Framework.Win
 {
     public class XlsFileConnection
     {
-        public  string constring = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=""Excel 8.0;HDR=Yes;IMEX=1"";Data Source={0}";
-        //   private  string constring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=Yes;IMEX=1""";
+        public  string constringNew = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=""Excel 8.0;HDR=Yes;IMEX=1"";Data Source={0}";
+       private  string constringOld = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=Yes;IMEX=1""";
+       public string constring = "";
         private const int MAX_EXCEL_ROWS_COUNT = 65536;
         private XlsFileErrorCode excelErr;
         private OleDbConnection Con;
         private ApplicationClass app;
-
+        string fileName = "";
         public XlsFileConnection(String FileName)
         {
-            constring = string.Format(constring, FileName);
+            this.fileName = FileName;
+            constring = string.Format(constringNew, FileName);
         }
         public XlsFileConnection()
         {
@@ -71,6 +73,7 @@ namespace ProtocolVN.Framework.Win
         }
 
         // MỞ KẾT NỐI TỚI FILE CSDL
+        int i = 1;
         public OleDbConnection Open()
         {
             Con = new OleDbConnection(constring);
@@ -80,14 +83,24 @@ namespace ProtocolVN.Framework.Win
             }
             catch (OleDbException e)
             {
-                Con.Close();
-                excelErr = XlsFileErrorCode.OPEN_ERROR;
-                if (e.Errors.Count == 0) return null;
-                if (e.Errors[0].NativeError == XlsFileErrorCode.NOT_EXCEL_FORMATED.GetHashCode())
-                    excelErr = XlsFileErrorCode.NOT_EXCEL_FORMATED;
-                else if (e.Errors[0].NativeError == XlsFileErrorCode.PASSWORD_PROTECTED.GetHashCode())
-                    excelErr = XlsFileErrorCode.PASSWORD_PROTECTED;
-                return null;
+                i++;
+                if (i <= 2)
+                {
+                    constring = string.Format(constringOld, fileName);
+                    Open();
+
+                }
+                else
+                {
+                    Con.Close();
+                    excelErr = XlsFileErrorCode.OPEN_ERROR;
+                    if (e.Errors.Count == 0) return null;
+                    if (e.Errors[0].NativeError == XlsFileErrorCode.NOT_EXCEL_FORMATED.GetHashCode())
+                        excelErr = XlsFileErrorCode.NOT_EXCEL_FORMATED;
+                    else if (e.Errors[0].NativeError == XlsFileErrorCode.PASSWORD_PROTECTED.GetHashCode())
+                        excelErr = XlsFileErrorCode.PASSWORD_PROTECTED;
+                    return null;
+                }
             }
             catch (Exception)
             {
