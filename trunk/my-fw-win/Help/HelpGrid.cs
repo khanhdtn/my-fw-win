@@ -627,7 +627,7 @@ namespace ProtocolVN.Framework.Win
         /// <summary>
         /// Xuất ra file dữ liệu trên gridView và định dạng dựa vào ext
         /// </summary>
-        public static bool exportFile(GridView gridView, String ext)
+        public static bool exportFile(GridView gridView, String ext, bool openFile, ref string outFileName )
         {
             bool flag = false;
             bool succ = false;
@@ -649,11 +649,11 @@ namespace ProtocolVN.Framework.Win
                     f.Filter = "Rich Text files (*.rtf)|*.rtf";
 
                 f.ShowDialog();
-                
+
                 PrintableComponentLink link = null;
 
                 if (gridView.GridControl != null)
-                {                    
+                {
                     if (FrameworkParams.headerLetter != null)
                     {
                         gridView.OptionsView.ShowViewCaption = false;
@@ -735,7 +735,7 @@ namespace ProtocolVN.Framework.Win
                     }
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -744,10 +744,11 @@ namespace ProtocolVN.Framework.Win
             }
             finally
             {
-                if (FrameworkParams.wait != null && flag == true) 
+                if (FrameworkParams.wait != null && flag == true)
                     FrameworkParams.wait.Finish();
                 if (succ == true)
                 {
+                    outFileName = filePath;
                     if (ext.Equals("xls") || ext.Equals("xlsx"))
                     {
                         try
@@ -762,7 +763,7 @@ namespace ProtocolVN.Framework.Win
                             excelSheet.Columns.AutoFit();
                             excelWorkbook.Save();
                             System.Threading.Thread.CurrentThread.CurrentCulture = oldCi;
-                            if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                            if (openFile && PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
                             {
                                 excelApp.Visible = true;
                             }
@@ -780,14 +781,14 @@ namespace ProtocolVN.Framework.Win
                         }
                         catch
                         {
-                            if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                            if (openFile && PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
                             {
                                 if (!HelpFile.OpenFile(filePath))
                                     HelpMsgBox.ShowNotificationMessage("Mở tập tin không thành công");
                             }
                         }
                     }
-                    else if (PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
+                    else if (openFile && PLMessageBox.ShowConfirmMessage("Bạn có muốn mở tập tin này không?") == DialogResult.Yes)
                     {
                         if (!HelpFile.OpenFile(filePath))
                             HelpMsgBox.ShowNotificationMessage("Mở tập tin không thành công");
@@ -797,6 +798,11 @@ namespace ProtocolVN.Framework.Win
                 gridView.OptionsView.ShowViewCaption = flagShowView;
             }
             return true;
+        }
+        public static bool exportFile(GridView gridView, String ext)
+        {
+            string file = "";
+          return  exportFile(gridView, ext, true,ref file);
         }
     
         #region Gắn Item chuẩn vào barMan
