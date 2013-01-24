@@ -623,11 +623,14 @@ namespace ProtocolVN.Framework.Win
             }
             return;
         }
-
+        public static bool exportFile(GridView gridView, String ext, bool openFile, ref string outFileName)
+        {
+            return exportFile(gridView, ext, openFile,ref outFileName,true);
+        }
         /// <summary>
         /// Xuất ra file dữ liệu trên gridView và định dạng dựa vào ext
         /// </summary>
-        public static bool exportFile(GridView gridView, String ext, bool openFile, ref string outFileName )
+        public static bool exportFile(GridView gridView, String ext, bool openFile, ref string outFileName, bool useHeader)
         {
             bool flag = false;
             bool succ = false;
@@ -652,7 +655,7 @@ namespace ProtocolVN.Framework.Win
 
                 PrintableComponentLink link = null;
 
-                if (gridView.GridControl != null)
+                if (useHeader && gridView.GridControl != null)
                 {
                     if (FrameworkParams.headerLetter != null)
                     {
@@ -804,7 +807,11 @@ namespace ProtocolVN.Framework.Win
             string file = "";
           return  exportFile(gridView, ext, true,ref file);
         }
-    
+        public static bool exportFile(GridView gridView, String ext, bool useHeader)
+        {
+            string file = "";
+            return exportFile(gridView, ext, true, ref file, useHeader);
+        }
         #region Gắn Item chuẩn vào barMan
         /// <summary>
         /// Gắn Item xuất ra File vào barMan ( giống như các màn hình quản lý)
