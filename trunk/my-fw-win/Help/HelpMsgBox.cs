@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ProtocolVN.Framework.Core;
 using System.Windows.Forms;
 using System.Drawing;
@@ -13,13 +11,13 @@ namespace ProtocolVN.Framework.Win
     /// </summary>
     public class HelpMsgBox : PLMessageBox
     {
-        #region Override from PLMessageBox
+        #region Override from var
         /// <summary>
         /// Hộp thoại thông báo không xác nhận
         /// </summary>
         public static DialogResult ShowNotificationMessage(string vnMsg)
         {
-            PLMessageBox box = GetNotificationMessage(vnMsg);
+            var box = GetNotificationMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.ShowDialog();
             return DialogResult.OK;
@@ -30,7 +28,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowNotificationMessage(string vnMsg, Control control)
         {
-            PLMessageBox box = GetNotificationMessage(vnMsg);
+            var box = GetNotificationMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.ShowDialog(control);
             return DialogResult.OK;
@@ -39,9 +37,9 @@ namespace ProtocolVN.Framework.Win
         /// <summary>
         /// Hộp thoại xác nhận
         /// </summary>
-        public static DialogResult ShowConfirmMessage(string vnMsg)
+        public new static DialogResult ShowConfirmMessage(string vnMsg)
         {
-            PLMessageBox box = GetConfirmMessage(vnMsg);
+            var box = GetConfirmMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.TopLevel = true;            
             box.ShowDialog();
@@ -56,7 +54,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowConfirmMessage(string vnMsg, Control control)
         {
-            PLMessageBox box = GetConfirmMessage(vnMsg);
+            var box = GetConfirmMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.ShowDialog(control);
             if (box.Kq == 1)
@@ -64,13 +62,28 @@ namespace ProtocolVN.Framework.Win
             else
                 return DialogResult.No;
         }
+        public  static DialogResult ShowConfirmMessage(string vnMsg, Control control, bool showCancel)
+        {
+            if (!showCancel) return ShowConfirmMessage(vnMsg, control);
+            return XtraMessageBox.Show(control, vnMsg, "Xác nhận", MessageBoxButtons.YesNoCancel,
+                                       MessageBoxIcon.Question);
+
+        }
+
+        public static DialogResult ShowConfirmMessage(string vnMsg, bool showCancel)
+        {
+            if (!showCancel) return ShowConfirmMessage(vnMsg);
+            return XtraMessageBox.Show(vnMsg, "Xác nhận", MessageBoxButtons.YesNoCancel,
+                                       MessageBoxIcon.Question);
+
+        }
 
         /// <summary>
         /// Hộp thoại thông báo lổi
         /// </summary>
-        public static DialogResult ShowErrorMessage(string vnMsg)
+        public new static DialogResult ShowErrorMessage(string vnMsg)
         {
-            PLMessageBox box = GetErrorMessage(vnMsg);
+            var box = GetErrorMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.ShowDialog();
             return DialogResult.OK;
@@ -81,7 +94,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowErrorMessage(string vnMsg, Control control)
         {
-            PLMessageBox box = GetErrorMessage(vnMsg);
+            var box = GetErrorMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.ShowDialog(control);
             return DialogResult.OK;
@@ -92,7 +105,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowSystemErrorMessage(string vnMsg)
         {
-            PLMessageBox box = GetSystemErrorMessage(vnMsg);
+            var box = GetSystemErrorMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.TopMost = true;
             box.ShowDialog();
@@ -104,7 +117,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowSystemErrorMessage(string vnMsg, Control control)
         {
-            PLMessageBox box = GetSystemErrorMessage(vnMsg);
+            var box = GetSystemErrorMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();            
             box.ShowDialog(control);
             return DialogResult.OK;
@@ -115,7 +128,7 @@ namespace ProtocolVN.Framework.Win
         /// </summary>
         public static DialogResult ShowSystemErrorMessage(string vnMsg, XtraForm mainForm)
         {
-            PLMessageBox box = GetSystemErrorMessage(vnMsg);
+            var box = GetSystemErrorMessage(vnMsg);
             if (FrameworkParams.wait != null) FrameworkParams.wait.Finish();
             box.TopMost = true;
             box.ShowDialog(mainForm);
@@ -127,7 +140,7 @@ namespace ProtocolVN.Framework.Win
         #region Message Box hỗ trợ Restart ứng dụng
         public static DialogResult _showNotificationMessage(string vnMsg, bool ShowRestart)
         {
-            return PLMessageBoxExt.ShowNotificationMessage(vnMsg, ShowRestart);
+            return  PLMessageBoxExt.ShowNotificationMessage(vnMsg, ShowRestart);
         }
 
         public static DialogResult _showErrorMessage(string vnMsg, bool ShowRestart)
@@ -182,5 +195,19 @@ namespace ProtocolVN.Framework.Win
         {
             WaitingMsg.LongProcess(func);
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // HelpMsgBox
+            // 
+            this.ClientSize = new System.Drawing.Size(349, 111);
+            this.Name = "HelpMsgBox";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+      
     }
 }
