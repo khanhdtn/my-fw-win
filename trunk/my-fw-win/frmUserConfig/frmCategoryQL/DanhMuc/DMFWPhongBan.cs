@@ -29,15 +29,15 @@ namespace ProtocolVN.DanhMuc
             </cat>";
         }
 
-        public string MenuItem(string MainCat, string ParentID, bool IsSep)
+        public string MenuItem(string mainCat, string parentID, bool isSep)
         {
-            return MenuItem(MainCat, "Phòng ban", ParentID, IsSep);
+            return MenuItem(mainCat, "Phòng ban", parentID, isSep);
         }
 
-        public string MenuItem(string MainCat, string Title, string ParentID, bool IsSep)
+        public string MenuItem(string mainCat, string title, string parentID, bool isSep)
         {
-            return MenuBuilder.CreateItem(N, Title, ParentID, true,
-                           HelpFURL.FURL(MainCat, N, "Init"), true, IsSep, "navPhongBan.png", false, "", "");
+            return MenuBuilder.CreateItem(N, title, parentID, true,
+                           HelpFURL.FURL(mainCat, N, "Init"), true, isSep, "navPhongBan.png", false, "", "");
         }
 
         #region Init      

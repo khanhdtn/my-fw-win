@@ -106,9 +106,9 @@ namespace ProtocolVN.Framework.Win
         }
 
         public static RepositoryItemLookUpEdit GetCotPLLookUp(
-            string IDField, string DisplayField, 
-            DataTable DataLookup, string[] LookupVisibleFields, 
-            string[] Captions, string ColumnField, bool AllowBlank, 
+            string IDField, string DisplayField,
+            DataTable DataLookup, string[] LookupVisibleFields,
+            string[] Captions, string ColumnField, bool AllowBlank,
             params int[] Widths)
         {
             RepositoryItemLookUpEdit lookup = new RepositoryItemLookUpEdit();
@@ -134,8 +134,7 @@ namespace ProtocolVN.Framework.Win
                     LookUpColumnInfo colLook = new LookUpColumnInfo();
                     colLook.FieldName = LookupVisibleFields[i];
                     colLook.Caption = Captions[i];
-
-                    if (Widths != null) colLook.Width = Widths[i];
+                    if (Widths != null && Widths.Length > i) colLook.Width = Widths[i];
                     else colLook.Width = 40;
                     totalWidth += colLook.Width;
                     lookup.Columns.Add(colLook);
@@ -143,7 +142,7 @@ namespace ProtocolVN.Framework.Win
             }
             lookup.PopupWidth = totalWidth;
             lookup.TextEditStyle = TextEditStyles.Standard;
-            if (Widths == null) lookup.BestFit();
+            if (Widths == null && Widths.Length > 0) lookup.BestFit();
 
             return lookup;
         }

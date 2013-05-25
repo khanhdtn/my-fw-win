@@ -24,15 +24,15 @@ namespace ProtocolVN.DanhMuc
                 </cat>";
         }
 
-        public string MenuItem(string MainCat, string ParentID, bool IsSep)
+        public string MenuItem(string mainCat, string parentID, bool isSep)
         {
-            return MenuItem(MainCat, "Tiền tệ", ParentID, IsSep);
+            return MenuItem(mainCat, "Tiền tệ", parentID, isSep);
         }
 
-        public string MenuItem(string MainCat, string Title, string ParentID, bool IsSep)
+        public string MenuItem(string mainCat, string title, string parentID, bool isSep)
         {
-            return MenuBuilder.CreateItem(N, Title, ParentID, true,
-                           HelpFURL.FURL(MainCat, N, "Init"), true, IsSep, "navTienTe.png", false, "", "");
+            return MenuBuilder.CreateItem(N, title, parentID, true,
+                           HelpFURL.FURL(mainCat, N, "Init"), true, isSep, "navTienTe.png", false, "", "");
         }
 
         #region Init
