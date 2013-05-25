@@ -9,7 +9,7 @@ namespace ProtocolVN.Framework.Win
     {
         String Item();
         XtraUserControl Init();
-        String MenuItem(String MainCat, string Title, string ParentID, bool IsSep);
-        String MenuItem(String MainCat, string ParentID, bool IsSep);
+        String MenuItem(String mainCat, string title, string parentID, bool isSep);
+        String MenuItem(String mainCat, string parentID, bool isSep);
     }
 }

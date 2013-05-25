@@ -24,6 +24,7 @@ namespace ProtocolVN.Framework.Win
             Field.Caption = Caption;
             Field.FieldName = FieldName;
             Field.Width = Width;
+          
         }
         #endregion
 
