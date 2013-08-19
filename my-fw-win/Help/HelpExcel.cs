@@ -19,7 +19,10 @@ namespace ProtocolVN.Framework.Win
 {
     public class HelpExcel
     {
-        public const string FILTER_FILE = "Microsoft Excel 2003 (*.xls)|*.xls|Microsoft Excel 2007 (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+        public const string FILTER_FILE_OPEN = "Microsoft Excel 2003-2007 (*.xls;*.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
+
+        public const string FILTER_FILE_SAVE =
+            "Microsoft Excel 2003 (*.xls)|*.xls|Microsoft Excel 2007(*.xlsx)|*.xlsx|All files (*.*)|*.*";
         public static string xlsRowIndexField = "INDEX_ROW_XLS";
         public static string xlsColumnIndexField = "INDEX_COLUMN_XLS";
         public static string xlsErrorField = "ERR_MESSAGE";     
@@ -52,7 +55,7 @@ namespace ProtocolVN.Framework.Win
             ds.Tables.Add(CreatDataTableToGrid(tableNameDMMaster, columns));
             SaveFileDialog save = new SaveFileDialog();
             save.InitialDirectory = "My Documents://";
-            save.Filter = FILTER_FILE;
+            save.Filter = FILTER_FILE_SAVE;
             save.Title = HelpApplication.getTitleForm("Xuất tập tin excel mẫu");
             string fileBK = "";
             if (save.ShowDialog() == DialogResult.OK)
@@ -337,7 +340,7 @@ namespace ProtocolVN.Framework.Win
 
                 OpenFileDialog oP = new OpenFileDialog();
                 oP.InitialDirectory = "My Documents://";
-                oP.Filter = FILTER_FILE;
+                oP.Filter = FILTER_FILE_OPEN;
                 oP.Title = HelpApplication.getTitleForm("Import dữ liệu từ tập tin excel");
                 if (oP.ShowDialog() == DialogResult.Cancel) return new DataSet();
                 System.Windows.Forms.Application.DoEvents();
