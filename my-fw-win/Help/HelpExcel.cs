@@ -22,7 +22,7 @@ namespace ProtocolVN.Framework.Win
         public const string FILTER_FILE_OPEN = "Microsoft Excel 2003-2007 (*.xls;*.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
 
         public const string FILTER_FILE_SAVE =
-            "Microsoft Excel 2003 (*.xls)|*.xls|Microsoft Excel 2007(*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            "Microsoft Excel 2007(*.xlsx)|*.xlsx|Microsoft Excel 2003(*.xls)|*.xls";
         public static string xlsRowIndexField = "INDEX_ROW_XLS";
         public static string xlsColumnIndexField = "INDEX_COLUMN_XLS";
         public static string xlsErrorField = "ERR_MESSAGE";     
