@@ -13,7 +13,6 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace ProtocolVN.Framework.Win
 {
-
     public class HelpTreeList : HelpTree {
 
     }

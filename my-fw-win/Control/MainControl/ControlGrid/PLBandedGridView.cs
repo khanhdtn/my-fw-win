@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Columns;
 using ProtocolVN.Framework.Core;
@@ -483,11 +484,16 @@ namespace DevExpress.XtraGrid.Views.BandedGrid
             fixColumn.BeginGroup = true;
             Menu.Items.Add(fixColumn);
 
-            DevExpress.Utils.Menu.DXMenuItem noFixColumn;
-            noFixColumn = new DevExpress.Utils.Menu.DXMenuItem("Bỏ cố định cột");
-            noFixColumn.Tag = menu.Column.AbsoluteIndex;
-            noFixColumn.Click += new EventHandler(noFixColumn_Click);
-            Menu.Items.Add(noFixColumn);
+            var visbleColumns = this.VisibleColumns.Cast<GridColumn>();
+
+            if (visbleColumns.Any(c => c.Fixed != FixedStyle.None))
+            {
+                DevExpress.Utils.Menu.DXMenuItem noFixColumn;
+                noFixColumn = new DevExpress.Utils.Menu.DXMenuItem("Bỏ cố định cột");
+                noFixColumn.Tag = menu.Column.AbsoluteIndex;
+                noFixColumn.Click += new EventHandler(noFixColumn_Click);
+                Menu.Items.Add(noFixColumn);
+            }
 
             DevExpress.Utils.Menu.DXMenuItem fixLeftColumn;
             fixLeftColumn = new DevExpress.Utils.Menu.DXMenuItem("Về bên trái danh sách");
@@ -803,20 +809,28 @@ namespace DevExpress.XtraGrid.Views.BandedGrid
 
         void noFixColumn_Click(object sender, EventArgs e)
         {
-            DevExpress.Utils.Menu.DXMenuItem item = sender as DevExpress.Utils.Menu.DXMenuItem;
-            this.Columns[(int)item.Tag].Fixed = FixedStyle.None;
+            var cols = this.VisibleColumns.Cast<GridColumn>().Where(c => c.Fixed != FixedStyle.None).ToList();
+            cols.ForEach(c => c.Fixed = FixedStyle.None);
         }
 
         void fixLeftColumn_Click(object sender, EventArgs e)
         {
             DevExpress.Utils.Menu.DXMenuItem item = sender as DevExpress.Utils.Menu.DXMenuItem;
-            this.Columns[(int)item.Tag].Fixed = FixedStyle.Left;
+            var col = this.Columns[(int)item.Tag];
+            for (int i = 0; i <= col.VisibleIndex; i++)
+            {
+                VisibleColumns[i].Fixed = FixedStyle.Left;
+            }
         }
 
         void fixRightColumn_Click(object sender, EventArgs e)
         {
             DevExpress.Utils.Menu.DXMenuItem item = sender as DevExpress.Utils.Menu.DXMenuItem;
-            this.Columns[(int)item.Tag].Fixed = FixedStyle.Right;
+            var col = this.Columns[(int)item.Tag];
+            for (int i = VisibleColumns.Count - 1; i >= col.VisibleIndex; i--)
+            {
+                VisibleColumns[i].Fixed = FixedStyle.Right;
+            }
         }
 
         private void itemPrintData_Click(object sender, EventArgs e)

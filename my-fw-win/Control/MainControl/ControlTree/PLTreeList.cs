@@ -1,21 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using DevExpress.Utils.Drawing;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Columns;
+using DevExpress.XtraTreeList.StyleFormatConditions;
 using ProtocolVN.Framework.Win;
 
 namespace DevExpress.XtraTreeList
 {
     public class PLTreeList : TreeList
-    {  
+    {
+        public bool _PLNo = true;
+        public int _PLSTTWidth = 40;
         private object _PrintElement;
         private object _ExportElement;
         public PLTreeList() : base()
         {
             this.ToPLTreeList();
+            CotSoTT();
         }
-      
+
+     
+
+     
         public void _SetPermissionElement(object print, object export)
         {
             this._PrintElement = print;
@@ -40,6 +49,46 @@ namespace DevExpress.XtraTreeList
             this.DragObjectDrop += new DragObjectDropEventHandler(TreeViewVN_DragObjectDrop);
         }
 
+        public override void BestFitColumns()
+        {
+            if (!Visible)
+            {
+                base.BestFitColumns();
+
+                return;
+            }
+
+         
+
+            for (int i = 0; i < VisibleColumns.Count; i++)
+            {
+
+                VisibleColumns[i].BestFit();
+            }
+
+          
+        }
+        void CotSoTT()
+        {
+            if (_PLNo)
+            {
+                this.IndicatorWidth = _PLSTTWidth;
+                this.Appearance.HeaderPanel.Options.UseTextOptions = true;
+                this.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                this.CustomDrawNodeIndicator += delegate(object sender, CustomDrawNodeIndicatorEventArgs e)
+                                                    {
+                                                        var args = e.ObjectArgs as IndicatorObjectInfoArgs;
+                                                        if(args==null) return;
+                                                        args.DisplayText = (GetVisibleIndexByNode(e.Node) + 1).ToString(CultureInfo.InvariantCulture);
+                                                        e.ImageIndex = -1;
+                                                    };
+            }
+        }
+
+        void PLTreeList_CustomDrawNodeIndicator(object sender, CustomDrawNodeIndicatorEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #region Xử lý không ẩn cột khi kéo cột ra ngoài
         void TreeViewVN_DragObjectDrop(object sender, DragObjectDropEventArgs e)
         {

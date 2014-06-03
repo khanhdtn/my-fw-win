@@ -68,11 +68,11 @@ namespace ProtocolVN.Framework.Win
                 {
                     DataRow newRow = dsClone.Tables[0].NewRow();
                     Object[] itemArray = ds.Tables[0].Rows[i].ItemArray;
-                    dsClone.Tables[0].Rows.Add(newRow);
                     for (int j = 0; j < itemArray.Length; j++)
                     {
                         newRow[j] = itemArray[j];
                     }
+                    dsClone.Tables[0].Rows.Add(newRow);
                     newRow[newRow.ItemArray.Length-1] = ds.Tables[0].Rows[i].RowState.ToString();                    
                 }
                 frm.InitData(dsClone, Msg);
