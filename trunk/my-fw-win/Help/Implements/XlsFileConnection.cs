@@ -14,17 +14,57 @@ namespace ProtocolVN.Framework.Win
     public class XlsFileConnection
     {
         public  string constringNew = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=""Excel 8.0;HDR=Yes;IMEX=1"";Data Source={0}";
-       private  string constringOld = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=Yes;IMEX=1""";
+        private string constringOld = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=Yes;IMEX=1""";
        public string constring = "";
         private const int MAX_EXCEL_ROWS_COUNT = 65536;
         private XlsFileErrorCode excelErr;
         private OleDbConnection Con;
         private ApplicationClass app;
         string fileName = "";
+
+        private string GetConnectionString(string version, string extension)
+        {
+            switch (version)
+            {
+                case "14.0":
+                case "12.0":
+                    return GetConnectionString2007(extension);
+                case "7.0":
+                case "8.0":
+                case "9.0":
+                case "10.0":
+                case "11.0":
+                    return GetConnectionString2003(extension);
+            }
+            return constringOld;
+        }
+           private string GetConnectionString2003(string extension)
+           {
+               return constringNew;
+           }
+        private string GetConnectionString2007(string extension)
+        {
+            switch (extension)
+            {
+                case ".xlsx":
+                    return
+                        @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;IMEX=1""";
+                case ".xls":
+                    return
+                        @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 8.0;HDR=YES;IMEX=1""";
+            }
+            return constringOld;
+        }
         public XlsFileConnection(String FileName)
+            : this(FileName, "12.0")
+        {
+
+        }
+
+        public XlsFileConnection(String FileName, string excelverion)
         {
             this.fileName = FileName;
-            constring = string.Format(constringNew, FileName);
+            constring = string.Format(GetConnectionString(excelverion, Path.GetExtension(fileName)), FileName);
         }
         public XlsFileConnection()
         {
@@ -117,15 +157,25 @@ namespace ProtocolVN.Framework.Win
             if (Con != null) Con.Dispose();
          
         }
-
+          /// <summary>
+        /// Load dataset từ excel
+        /// </summary>
+        /// <param name="sheetname"></param>
+        /// <param name="defaultColAndValue"></param>
+        /// <param name="useColIndex">Tên cột tạo số tự tăng, bắt đầu từ 2. Bỏ trống thì không tạo.</param>
+        /// <returns></returns>
+        public DataSet LoadDataSet(string sheetname, object[] defaultColAndValue)
+          {
+              return LoadDataSet(sheetname, defaultColAndValue, true);
+          }
         /// <summary>
         /// Load dataset từ excel
         /// </summary>
         /// <param name="sheetname"></param>
         /// <param name="defaultColAndValue"></param>
-        /// <param name="fieldNameAutoIncrement">Tên cột tạo số tự tăng, bắt đầu từ 2. Bỏ trống thì không tạo.</param>
+        /// <param name="useColIndex">Tên cột tạo số tự tăng, bắt đầu từ 2. Bỏ trống thì không tạo.</param>
         /// <returns></returns>
-        public DataSet LoadDataSet(string sheetname, object[] defaultColAndValue)
+        public DataSet LoadDataSet(string sheetname, object[] defaultColAndValue, bool useColIndex)
         {
             OleDbDataAdapter Adapter;
             DataSet DS;
@@ -158,12 +208,12 @@ namespace ProtocolVN.Framework.Win
             {
 
                 DS.Tables.Add(new System.Data.DataTable(sheetname));
-                DataColumn colIndex = new DataColumn(HelpExcel.xlsRowIndexField, typeof(System.Int32));
-                colIndex.AutoIncrement = true;
-                colIndex.AutoIncrementStep = 1;
-                colIndex.AutoIncrementSeed = 2;
-                DS.Tables[0].Columns.Add(colIndex);
-
+                if (useColIndex)
+                {
+                    var colIndex = new DataColumn(HelpExcel.xlsRowIndexField, typeof (System.Int32))
+                                       {AutoIncrement = true, AutoIncrementStep = 1, AutoIncrementSeed = 2};
+                    DS.Tables[0].Columns.Add(colIndex);
+                }
                 Adapter.Fill(DS, sheetname);
                 return DS;
             }

@@ -452,6 +452,14 @@ namespace ProtocolVN.Framework.Win
             edit.ShowHeader = false;
             return edit;
         }
+        public static RepositoryItemLookUpEdit FieldCombobox(PivotGridField Field, DataSet ds, string IDField, string DisplayField, string FieldName)
+        {
+            RepositoryItemLookUpEdit edit = FieldPLLookUp(Field, IDField, DisplayField, ds.Tables[0],
+                                                          FieldName);
+       
+            edit.ShowHeader = false;
+            return edit;
+        }
 
         public static RepositoryItemLookUpEdit FieldCombobox(PivotGridField Field, string LookupTable,
             string IDField, string DisplayField, string FieldName, string Caption, int VisibleIndex)
@@ -533,6 +541,20 @@ namespace ProtocolVN.Framework.Win
                 Field.FieldName = FieldName;
                 Field.Caption = Caption;
                 Field.Index = VisibleIndex;
+            }
+            return (RepositoryItemLookUpEdit)Field.FieldEdit;
+        }
+
+        public static RepositoryItemLookUpEdit FieldPLLookUp(PivotGridField Field,
+            string IDField, string DisplayField, DataTable DataLookup,string FieldName)
+        {
+            SetHorzAlignment(Field, HorzAlignment.Near);
+            Field.FieldEdit = HelpRepository.GetCotPLLookUp(
+                IDField, DisplayField, DataLookup, new string[0], new string[0], 
+                FieldName, false);
+            if (FieldName != null)
+            {
+                Field.FieldName = FieldName;
             }
             return (RepositoryItemLookUpEdit)Field.FieldEdit;
         }
